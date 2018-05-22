@@ -1,0 +1,3 @@
+[submodule "gsoc-blog"]
+	path = gsoc-blog
+	url = git@github.com:tinyvmi/gsoc-blog.git

@@ -1,0 +1,57 @@
+[
+{
+	"uri": "/docs/install/pre-request/",
+	"title": "Prerequest",
+	"tags": [],
+	"description": "",
+	"content": "Prerequest of TinyVMI\nComing Soon\u0026hellip;\n"
+},
+{
+	"uri": "/docs/overview/",
+	"title": "Overview",
+	"tags": [],
+	"description": "",
+	"content": "An overview of what is TinyVMI.\nComing Soon\u0026hellip;\n"
+},
+{
+	"uri": "/docs/install/installation/",
+	"title": "Installation",
+	"tags": [],
+	"description": "",
+	"content": "Build and Install TinyVMI\nComing Soon\u0026hellip;\n"
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/docs/",
+	"title": "Get Started",
+	"tags": [],
+	"description": "",
+	"content": "This will give an overview of how to start with TinyVMI.\nComming Soon \u0026hellip;\n"
+},
+{
+	"uri": "/docs/install/",
+	"title": "Install TinyVMI",
+	"tags": [],
+	"description": "",
+	"content": "How to install TinyVMI on Xen Hypervisor.\nComming Soon\u0026hellip;\n"
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/",
+	"title": "TinyVMI Documentation",
+	"tags": [],
+	"description": "",
+	"content": " TinyVMI TinyVMI   is a lightweight implementation of LibVMI   in a minimized operating system.\nTinyVMI is now being developed under a GSoC project. A blog is maintained to track its development progress.  Contribute to this documentation Feel free to update this content, just click the Edit this page link displayed on top right of each page, and pullrequest it\nDocumentation website This current documentation has been statically generated with Hugo, source code is available here at GitHub  \n"
+}]

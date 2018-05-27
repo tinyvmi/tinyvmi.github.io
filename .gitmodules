@@ -1,3 +1,4 @@
 [submodule "gsoc-blog"]
 	path = gsoc-blog
 	url = https://github.com/tinyvmi/gsoc-blog.git
+	branch = master

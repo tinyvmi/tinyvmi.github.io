@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.41-DEV" />
-<title>Installation :: TinyVMI Documentation</title>
+<title>Build and Run TinyVMI :: TinyVMI Documentation</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <script src="/js/jquery-2.x.min.js"></script>
 <script type="text/javascript">
-      var baseurl = "\/";
+      var baseurl = "https:\/\/tinyvmi.github.io\/";
 </script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -30,14 +30,14 @@
 
     
   </head>
-  <body data-url="/docs/install/installation/">
+  <body data-url="/get-started/run-tinyvmi/">
     
       <header>
   <div class="logo">
     
 	
   
-    <a class="baselink" href="/">TinyVMI Documentation</a>
+    <a class="baselink" href="https://tinyvmi.github.io/">TinyVMI Documentation</a>
   
 
   </div>
@@ -63,40 +63,61 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/docs/" class="dd-item parent haschildren
+    <li data-nav-id="/get-started/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
-      <a href="/docs/">Get Started</a>
+      <a href="/get-started/">Get Started</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/docs/install/" class="dd-item parent haschildren
-        ">
-      <div>
-      <a href="/docs/install/">Install TinyVMI</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/docs/install/pre-request/" class="dd-item">
+      <li data-nav-id="/get-started/install-xen-with-flask/" class="dd-item">
         <div>
-          <a href="/docs/install/pre-request/">
-            Prerequest
+          <a href="/get-started/install-xen-with-flask/">
+            Install Xen With FLASK
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/docs/install/installation/" class="dd-item active">
+    <li data-nav-id="/get-started/configuration/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/get-started/configuration/">Configure TinyVMI</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/get-started/configuration/update-xsm-flask-policy/" class="dd-item">
         <div>
-          <a href="/docs/install/installation/">
-            Installation
+          <a href="/get-started/configuration/update-xsm-flask-policy/">
+            Update XSM FLASK Policy
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/get-started/configuration/update-stubdom-makefile/" class="dd-item">
+        <div>
+          <a href="/get-started/configuration/update-stubdom-makefile/">
+            Update Stubdom Makefile
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/get-started/configuration/get-target-guest-info/" class="dd-item">
+        <div>
+          <a href="/get-started/configuration/get-target-guest-info/">
+            Get Target Guest Info
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/get-started/configuration/configure-tinyvmi-with-target-guest-info/" class="dd-item">
+        <div>
+          <a href="/get-started/configuration/configure-tinyvmi-with-target-guest-info/">
+            Configure TinyVMI with Target Info
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
         </ul>
     </li>
-      <li data-nav-id="/docs/overview/" class="dd-item">
+      <li data-nav-id="/get-started/run-tinyvmi/" class="dd-item active">
         <div>
-          <a href="/docs/overview/">
-            Overview
+          <a href="/get-started/run-tinyvmi/">
+            Build and Run TinyVMI
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -128,15 +149,18 @@
       <center>Navigation : 
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/docs/" >
+    <option value="/get-started/" >
    Get Started</option> 
-    <option value="/docs/install/" >
+      <option value="/get-started/install-xen-with-flask/" >- Install Xen With FLASK</option>
+    <option value="/get-started/configuration/" >
   - 
-   Install TinyVMI</option> 
-      <option value="/docs/install/pre-request/" >-- Prerequest</option>
-      <option value="/docs/install/installation/"  selected>-- Installation</option>
+   Configure TinyVMI</option> 
+      <option value="/get-started/configuration/update-xsm-flask-policy/" >-- Update XSM FLASK Policy</option>
+      <option value="/get-started/configuration/update-stubdom-makefile/" >-- Update Stubdom Makefile</option>
+      <option value="/get-started/configuration/get-target-guest-info/" >-- Get Target Guest Info</option>
+      <option value="/get-started/configuration/configure-tinyvmi-with-target-guest-info/" >-- Configure TinyVMI with Target Info</option>
   
-      <option value="/docs/overview/" >- Overview</option>
+      <option value="/get-started/run-tinyvmi/"  selected>- Build and Run TinyVMI</option>
   
 
 
@@ -153,28 +177,60 @@
         <link href="/css/auto-complete.css" rel="stylesheet">
         <script type="text/javascript">
           
-              var baseurl = "\/";
+              var baseurl = "https:\/\/tinyvmi.github.io\/";
           
         </script>
         <script type="text/javascript" src="/js/search.js"></script>
       </div>
     
 
-    <h1>Installation</h1>
+    <h1>Build and Run TinyVMI</h1>
     
     
     
-    <p>Build and Install TinyVMI</p>
+    
 
-<p>Coming Soon&hellip;</p>
+<h4 id="build-tinyvmi">Build TinyVMI</h4>
+
+<pre><code># cd ./stubdom/
+# make tinyvmi-stubdom
+</code></pre>
+
+<h4 id="label-vm-of-tinyvmi">Label VM of TinyVMI</h4>
+
+<p>Change xl config file for the VM of TinyVMI. A sample could be found in <code>xen-src/extras/minios/domain_config</code>. Add the following line to this file:</p>
+
+<pre><code>seclabel='system_u:system_r:domU_t'
+</code></pre>
+
+<h4 id="run-tinyvmi">Run TinyVMI</h4>
+
+<p>Now you can start vm by running <code>xl create &lt;domain_config_file&gt;</code>.
+For example,</p>
+
+<pre><code># cd minios-x86_64-tinyvmi
+# xl create -c ../../extras/mini-os/domain_config
+</code></pre>
+
+<div class="panel panel-success">
+	<div class="panel-heading">Tips</div>
+	<div class="panel-body"><p>You can also directly run a handy bash script in tinyvmi/ directory:</p>
+
+<pre><code>cd xen-src/stubdom/tinyvmi
+sudo bash run.tiny.sh
+</code></pre>
+</div>
+	
+</div>
+
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/docs/install/pre-request/" title="Prerequest"> <i class="fa fa-chevron-left"></i><label>Prerequest</label></a>
-    <a class="nav nav-next" href="/docs/overview/" title="Overview" style="margin-right: 0px;"><label>Overview</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/get-started/configuration/configure-tinyvmi-with-target-guest-info/" title="Configure TinyVMI with Target Info"> <i class="fa fa-chevron-left"></i><label>Configure TinyVMI with Target Info</label></a>
+    <a class="nav nav-next" href="/get-started/install-xen-with-flask/" title="Install Xen With FLASK" style="margin-right: 0px;"><label>Install Xen With FLASK</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -189,12 +245,12 @@
 
   
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 05/18/2018
+        <i class='fa fa-calendar'></i> Last update on 06/04/2018
     </div>
     
 
     <div class="github-link">
-      <a href="https://github.com/tinyvmi/tinyvmi-docs-hugo/edit/master/content/docs/install/installation.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/tinyvmi/tinyvmi-docs-hugo/edit/master/content/get-started/run-tinyvmi.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

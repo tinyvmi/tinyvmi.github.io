@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.41-DEV" />
-<title>Tags :: TinyVMI Documentation</title>
+<title>Update Stubdom Makefile :: TinyVMI Documentation</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -30,7 +30,7 @@
 
     
   </head>
-  <body data-url="/tags/">
+  <body data-url="/get-started/configuration/update-stubdom-makefile/">
     
       <header>
   <div class="logo">
@@ -63,7 +63,7 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/get-started/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/get-started/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/get-started/">Get Started</a>
@@ -77,7 +77,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/get-started/configuration/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/get-started/configuration/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/get-started/configuration/">Configure TinyVMI</a>
@@ -91,7 +91,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/get-started/configuration/update-stubdom-makefile/" class="dd-item">
+      <li data-nav-id="/get-started/configuration/update-stubdom-makefile/" class="dd-item active">
         <div>
           <a href="/get-started/configuration/update-stubdom-makefile/">
             Update Stubdom Makefile
@@ -156,7 +156,7 @@
   - 
    Configure TinyVMI</option> 
       <option value="/get-started/configuration/update-xsm-flask-policy/" >-- Update XSM FLASK Policy</option>
-      <option value="/get-started/configuration/update-stubdom-makefile/" >-- Update Stubdom Makefile</option>
+      <option value="/get-started/configuration/update-stubdom-makefile/"  selected>-- Update Stubdom Makefile</option>
       <option value="/get-started/configuration/get-target-guest-info/" >-- Get Target Guest Info</option>
       <option value="/get-started/configuration/configure-tinyvmi-with-target-guest-info/" >-- Configure TinyVMI with Target Info</option>
   
@@ -184,40 +184,80 @@
       </div>
     
 
-    <h1>Tags</h1>
+    <h1>Update Stubdom Makefile</h1>
     
     
     
+    <p>The following changes are made to <code>xen-src/stubdom/Makefile</code> to support the compilation of TinyVMI in Xen source tree (<a href="https://github.com/tinyvmi/tinyvmi/tree/master/docs/xen-stubdom/example_makefile">full makefile</a>):</p>
 
-
-
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 0</span>
-	
-</nav>
-
-</div>
-
-
-
-<div style="margin-bottom:2rem"></div>
-
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 0</span>
-	
-</nav>
-
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-patch" data-lang="patch"><span style="color:#f92672">--- stubdom/Makefile.old	2017-12-13 06:37:59.000000000 -0500
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ stubdom/Makefile	2018-05-10 16:44:54.053957803 -0400
+</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -61,7 +61,7 @@
+</span><span style="color:#75715e"></span> 
+ TARGET_LDFLAGS += -nostdlib -L$(CROSS_PREFIX)/$(GNU_TARGET_ARCH)-xen-elf/lib
+ 
+<span style="color:#f92672">-TARGETS=$(STUBDOM_TARGETS)
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+TARGETS=$(STUBDOM_TARGETS) c xenstore tinyvmi
+</span><span style="color:#a6e22e"></span> 
+ STUBDOMPATH=&#34;stubdompath.sh&#34;
+ genpath-target = $(call buildmakevars2file,$(STUBDOMPATH))
+<span style="color:#75715e">@@ -493,6 +493,16 @@
+</span><span style="color:#75715e"></span> c: $(CROSS_ROOT) c-minios-config.mk
+ 	CPPFLAGS=&#34;$(TARGET_CPPFLAGS) $(shell cat c-minios-config.mk)&#34; CFLAGS=&#34;$(TARGET_CFLAGS)&#34; $(MAKE) DESTDIR= -C $@ LWIPDIR=$(CURDIR)/lwip-$(XEN_TARGET_ARCH) 
+ 
+<span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+###
+</span><span style="color:#a6e22e">+# tinyvmi based on c but no glib, 2014.10.27
+</span><span style="color:#a6e22e">+###
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+.PHONY: tinyvmi
+</span><span style="color:#a6e22e">+tinyvmi: cross-newlib
+</span><span style="color:#a6e22e">+	CPPFLAGS=&#34;$(TARGET_CPPFLAGS) $(shell cat c-minios-config.mk)&#34; CFLAGS=&#34;$(TARGET_CFLAGS)&#34; $(MAKE) DESTDIR= -C $@ LWIPDIR=$(CURDIR)/lwip-$(XEN_TARGET_ARCH) 
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e"></span> ######
+ # VTPM
+ ######
+<span style="color:#75715e">@@ -565,6 +575,13 @@
+</span><span style="color:#75715e"></span> c-stubdom: mini-os-$(XEN_TARGET_ARCH)-c lwip-$(XEN_TARGET_ARCH) libxc c
+ 	DEF_CPPFLAGS=&#34;$(TARGET_CPPFLAGS)&#34; DEF_CFLAGS=&#34;$(TARGET_CFLAGS)&#34; DEF_LDFLAGS=&#34;$(TARGET_LDFLAGS)&#34; MINIOS_CONFIG=&#34;$(CURDIR)/c/minios.cfg&#34; $(MAKE) DESTDIR= -C $(MINI_OS) OBJ_DIR=$(CURDIR)/$&lt; LWIPDIR=$(CURDIR)/lwip-$(XEN_TARGET_ARCH) APP_OBJS=$(CURDIR)/c/main.a
+ 
+<span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+## added 20180305, lele
+</span><span style="color:#a6e22e">+.PHONY: tinyvmi-stubdom
+</span><span style="color:#a6e22e">+tinyvmi-stubdom: mini-os-$(XEN_TARGET_ARCH)-tinyvmi lwip-$(XEN_TARGET_ARCH) libxc xenstore tinyvmi
+</span><span style="color:#a6e22e">+	@echo &#34;LELE:target $@ :L563&#34;
+</span><span style="color:#a6e22e">+	DEF_CPPFLAGS=&#34;$(TARGET_CPPFLAGS)&#34; DEF_CFLAGS=&#34;$(TARGET_CFLAGS)&#34; DEF_LDFLAGS=&#34;$(TARGET_LDFLAGS)&#34; MINIOS_CONFIG=&#34;$(CURDIR)/tinyvmi/minios.cfg&#34; $(MAKE) DESTDIR= -C $(MINI_OS) OBJ_DIR=$(CURDIR)/$&lt; LWIPDIR=$(CURDIR)/lwip-$(XEN_TARGET_ARCH) APP_OBJS=$(CURDIR)/tinyvmi/main.a
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e"></span> .PHONY: vtpm-stubdom
+ vtpm-stubdom: mini-os-$(XEN_TARGET_ARCH)-vtpm vtpm
+ 	DEF_CPPFLAGS=&#34;$(TARGET_CPPFLAGS)&#34; DEF_CFLAGS=&#34;$(TARGET_CFLAGS)&#34; DEF_LDFLAGS=&#34;$(TARGET_LDFLAGS)&#34; MINIOS_CONFIG=&#34;$(CURDIR)/vtpm/minios.cfg&#34; $(MAKE) -C $(MINI_OS) OBJ_DIR=$(CURDIR)/$&lt; APP_OBJS=&#34;$(CURDIR)/vtpm/vtpm.a&#34; APP_LDLIBS=&#34;-ltpm -ltpm_crypto -lgmp -lpolarssl&#34;
+<span style="color:#75715e">@@ -604,6 +621,8 @@
+</span><span style="color:#75715e"></span> 
+ install-c: c-stubdom
+ 
+<span style="color:#a6e22e">+install-tinyvmi: tinyvmi-stubdom
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e"></span> install-caml: caml-stubdom
+ 
+ install-xenstore: xenstore-stubdom
+<span style="color:#75715e">@@ -658,6 +677,7 @@
+</span><span style="color:#75715e"></span> clean:
+ 	rm -fr mini-os-$(XEN_TARGET_ARCH)-ioemu
+ 	rm -fr mini-os-$(XEN_TARGET_ARCH)-c
+<span style="color:#a6e22e">+	rm -fr mini-os-$(XEN_TARGET_ARCH)-tinyvmi #lele, 2018.02.18
+</span><span style="color:#a6e22e"></span> 	rm -fr mini-os-$(XEN_TARGET_ARCH)-caml
+ 	rm -fr mini-os-$(XEN_TARGET_ARCH)-grub
+ 	rm -fr mini-os-$(XEN_TARGET_ARCH)-xenstore
+</code></pre></div>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/get-started/" title="Get Started" style="margin-right: 0px;"><label>Get Started</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/get-started/configuration/update-xsm-flask-policy/" title="Update XSM FLASK Policy"> <i class="fa fa-chevron-left"></i><label>Update XSM FLASK Policy</label></a>
+    <a class="nav nav-next" href="/get-started/configuration/get-target-guest-info/" title="Get Target Guest Info" style="margin-right: 0px;"><label>Get Target Guest Info</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -231,9 +271,13 @@
     
 
   
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 06/04/2018
+    </div>
+    
 
     <div class="github-link">
-      <a href="https://github.com/tinyvmi/tinyvmi-docs-hugo/edit/master/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/tinyvmi/tinyvmi-docs-hugo/edit/master/content/get-started/configuration/update-stubdom-makefile.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

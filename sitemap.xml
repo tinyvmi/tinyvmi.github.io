@@ -3,43 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/docs/install/pre-request/</loc>
-    <lastmod>2018-05-21T21:58:49-04:00</lastmod>
+    <loc>https://tinyvmi.github.io/get-started/configuration/update-xsm-flask-policy/</loc>
+    <lastmod>2018-06-04T22:21:07-04:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/overview/</loc>
-    <lastmod>2018-05-21T16:16:11-04:00</lastmod>
+    <loc>https://tinyvmi.github.io/get-started/install-xen-with-flask/</loc>
+    <lastmod>2018-06-04T14:22:24-04:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/install/installation/</loc>
-    <lastmod>2018-05-18T23:05:49-04:00</lastmod>
+    <loc>https://tinyvmi.github.io/get-started/configuration/update-stubdom-makefile/</loc>
+    <lastmod>2018-06-04T22:24:30-04:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://tinyvmi.github.io/get-started/configuration/</loc>
+    <lastmod>2018-06-04T22:21:41-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tinyvmi.github.io/get-started/configuration/get-target-guest-info/</loc>
+    <lastmod>2018-06-04T22:24:45-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tinyvmi.github.io/get-started/run-tinyvmi/</loc>
+    <lastmod>2018-06-04T14:43:03-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tinyvmi.github.io/get-started/configuration/configure-tinyvmi-with-target-guest-info/</loc>
+    <lastmod>2018-06-04T22:25:06-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tinyvmi.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/docs/</loc>
-    <lastmod>2018-05-21T16:16:11-04:00</lastmod>
+    <loc>https://tinyvmi.github.io/get-started/</loc>
+    <lastmod>2018-06-04T14:22:24-04:00</lastmod>
   </url>
   
   <url>
-    <loc>/docs/install/</loc>
-    <lastmod>2018-05-21T21:58:49-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
+    <loc>https://tinyvmi.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2018-05-21T21:58:49-04:00</lastmod>
+    <loc>https://tinyvmi.github.io/</loc>
+    <lastmod>2018-06-04T22:21:07-04:00</lastmod>
   </url>
   
 </urlset>

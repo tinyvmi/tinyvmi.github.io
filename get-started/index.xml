@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Get Started on TinyVMI Documentation</title>
+    <link>https://tinyvmi.github.io/get-started/</link>
+    <description>Recent content in Get Started on TinyVMI Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 Jun 2018 14:22:24 -0400</lastBuildDate>
+    
+	<atom:link href="https://tinyvmi.github.io/get-started/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Install Xen With FLASK</title>
+      <link>https://tinyvmi.github.io/get-started/install-xen-with-flask/</link>
+      <pubDate>Mon, 04 Jun 2018 14:22:24 -0400</pubDate>
+      
+      <guid>https://tinyvmi.github.io/get-started/install-xen-with-flask/</guid>
+      <description>Overview The following steps are tested with Xen 4.10.0, other Xen versions with 4.8 and onward should also be fine. The tested host OSes include Ubuntu 16.04, and 18.04. Other Linux based system should be OK as long as they are compatitable with Xen hypervisor.
+Steps  1. Install Prerequest Packages of Xen
+ 2. Install Xen
+ 3. Install XSM Policy
+ 4. Update GRUB Scripts with Xen XSM</description>
+    </item>
+    
+    <item>
+      <title>Build and Run TinyVMI</title>
+      <link>https://tinyvmi.github.io/get-started/run-tinyvmi/</link>
+      <pubDate>Mon, 04 Jun 2018 14:43:03 -0400</pubDate>
+      
+      <guid>https://tinyvmi.github.io/get-started/run-tinyvmi/</guid>
+      <description>Build TinyVMI # cd ./stubdom/ # make tinyvmi-stubdom  Label VM of TinyVMI Change xl config file for the VM of TinyVMI. A sample could be found in xen-src/extras/minios/domain_config. Add the following line to this file:
+seclabel=&#39;system_u:system_r:domU_t&#39;  Run TinyVMI Now you can start vm by running xl create &amp;lt;domain_config_file&amp;gt;. For example,
+# cd minios-x86_64-tinyvmi # xl create -c ../../extras/mini-os/domain_config  Tips You can also directly run a handy bash script in tinyvmi/ directory:</description>
+    </item>
+    
+  </channel>
+</rss>

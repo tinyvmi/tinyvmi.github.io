@@ -60,7 +60,7 @@
 	"title": "Get Started",
 	"tags": [],
 	"description": "",
-	"content": "Welcome! Now let\u0026rsquo;s start to learn how to install and run TinyVMI on Xen Hypervisor.\nFirst, we need Install Xen with FLASK.\n"
+	"content": "Welcome! Now let\u0026rsquo;s start to learn how to install and run TinyVMI on Xen Hypervisor.\nFirst, we need Install Xen with XSM Enabled.\n"
 },
 {
 	"uri": "https://tinyvmi.github.io/tags/",

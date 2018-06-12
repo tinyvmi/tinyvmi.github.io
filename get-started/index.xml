@@ -32,9 +32,10 @@ Steps  1. Install Prerequest Packages of Xen
       <guid>https://tinyvmi.github.io/get-started/run-tinyvmi/</guid>
       <description>Tips You can directly run a handy bash script in tinyvmi/ directory:
 To build and run TinyVMI altogether in a single command:
-cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh build  Or to only build TinyVMI without creating VM:
+cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh build  Or to only make TinyVMI without creating VM:
 cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh make Or to only run TinyVMI without rebuild:
-cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh make #This will only Run TinyVMI without re-build. For more details, see the following steps.</description>
+cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh For more details, see the following steps.
+  Build TinyVMI # cd ./stubdom/ # make tinyvmi-stubdom  Grant Xenstore Permission to LibVMI Command xenstore-chmod can be used to change xenstore permissions.</description>
     </item>
     
   </channel>

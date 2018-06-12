@@ -255,14 +255,14 @@ ln -s ../target_conf_examples/my_conf_dir/* .
 <p>Currently, TinyVMI cannot convert domain string name to domain ID by querying Xenstore.
 Therefore, a hardcoded domain ID is required. To do so, change DOMAIN_ID and DOMAIN_NAME macro definition in file <code>tinyvmi/include/domain_id.h</code>. For example:</p>
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#75715e">#ifndef DOMAIN_ID_H
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define DOMAIN_ID_H
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef DOMAIN_ID_H
+</span><span style="color:#75715e">#define DOMAIN_ID_H
 </span><span style="color:#75715e"></span>
-    <span style="color:#75715e">#define DOMAIN_ID  1
+<span style="color:#75715e">#define DOMAIN_ID  1
 </span><span style="color:#75715e"></span>
-    <span style="color:#75715e">#define DOMAIN_NAME &#34;xen16a&#34;
+<span style="color:#75715e">#define DOMAIN_NAME &#34;xen16a&#34;
 </span><span style="color:#75715e"></span>
-    <span style="color:#75715e">#endif // DOMAIN_ID_H</span></code></pre></div></p>
+<span style="color:#75715e">#endif // DOMAIN_ID_H</span></code></pre></div></p>
 
 
     

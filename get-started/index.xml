@@ -30,9 +30,11 @@ Steps  1. Install Prerequest Packages of Xen
       <pubDate>Mon, 04 Jun 2018 14:43:03 -0400</pubDate>
       
       <guid>https://tinyvmi.github.io/get-started/run-tinyvmi/</guid>
-      <description>Build TinyVMI # cd ./stubdom/ # make tinyvmi-stubdom  Label VM of TinyVMI Change xl config file for the VM of TinyVMI. A sample could be found in xen-src/extras/mini-os/domain_config. Add the following line to this file:
-seclabel=&#39;system_u:system_r:domU_t&#39;  Run TinyVMI Now you can start vm by running xl create &amp;lt;domain_config_file&amp;gt;. For example,
-# cd minios-x86_64-tinyvmi # xl create -c ../../extras/mini-os/domain_config  Tips You can also directly run a handy bash script in tinyvmi/ directory:</description>
+      <description>Tips You can directly run a handy bash script in tinyvmi/ directory:
+To build and run TinyVMI altogether in a single command:
+cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh build  Or to only build TinyVMI without creating VM:
+cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh make Or to only run TinyVMI without rebuild:
+cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh make #This will only Run TinyVMI without re-build. For more details, see the following steps.</description>
     </item>
     
   </channel>

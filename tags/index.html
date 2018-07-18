@@ -63,60 +63,72 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/get-started/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/quick-start/" class="dd-item alwaysopen
         ">
       <div>
-      <a href="/get-started/">Get Started</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/quick-start/">Quick Start</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/step-by-step/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/step-by-step/">Step by Step</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/get-started/install-xen-with-flask/" class="dd-item">
+      <li data-nav-id="/step-by-step/install-xen-with-flask/" class="dd-item">
         <div>
-          <a href="/get-started/install-xen-with-flask/">
+          <a href="/step-by-step/install-xen-with-flask/">
             Install Xen With FLASK
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/get-started/configuration/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/step-by-step/configuration/" class="dd-item alwaysopen haschildren
         ">
       <div>
-      <a href="/get-started/configuration/">Configure TinyVMI</a>
+      <a href="/step-by-step/configuration/">Configure TinyVMI</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/get-started/configuration/update-xsm-flask-policy/" class="dd-item">
+      <li data-nav-id="/step-by-step/configuration/update-xsm-flask-policy/" class="dd-item">
         <div>
-          <a href="/get-started/configuration/update-xsm-flask-policy/">
+          <a href="/step-by-step/configuration/update-xsm-flask-policy/">
             Update XSM FLASK Policy
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/get-started/configuration/update-stubdom-makefile/" class="dd-item">
+      <li data-nav-id="/step-by-step/configuration/update-stubdom-makefile/" class="dd-item">
         <div>
-          <a href="/get-started/configuration/update-stubdom-makefile/">
+          <a href="/step-by-step/configuration/update-stubdom-makefile/">
             Update Stubdom Makefile
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/get-started/configuration/get-target-guest-info/" class="dd-item">
+      <li data-nav-id="/step-by-step/configuration/update-minios-makefile/" class="dd-item">
         <div>
-          <a href="/get-started/configuration/get-target-guest-info/">
+          <a href="/step-by-step/configuration/update-minios-makefile/">
+            Update Mini-OS Makefile
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/step-by-step/configuration/get-target-guest-info/" class="dd-item">
+        <div>
+          <a href="/step-by-step/configuration/get-target-guest-info/">
             Get Target Guest Info
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/get-started/configuration/configure-tinyvmi-with-target-guest-info/" class="dd-item">
+      <li data-nav-id="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/" class="dd-item">
         <div>
-          <a href="/get-started/configuration/configure-tinyvmi-with-target-guest-info/">
+          <a href="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/">
             Configure TinyVMI with Target Info
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
         </ul>
     </li>
-      <li data-nav-id="/get-started/run-tinyvmi/" class="dd-item">
+      <li data-nav-id="/step-by-step/run-tinyvmi/" class="dd-item">
         <div>
-          <a href="/get-started/run-tinyvmi/">
+          <a href="/step-by-step/run-tinyvmi/">
             Build and Run TinyVMI
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
@@ -149,19 +161,11 @@
       <center>Navigation : 
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/get-started/" >
-   Get Started</option> 
-      <option value="/get-started/install-xen-with-flask/" >- Install Xen With FLASK</option>
-    <option value="/get-started/configuration/" >
-  - 
-   Configure TinyVMI</option> 
-      <option value="/get-started/configuration/update-xsm-flask-policy/" >-- Update XSM FLASK Policy</option>
-      <option value="/get-started/configuration/update-stubdom-makefile/" >-- Update Stubdom Makefile</option>
-      <option value="/get-started/configuration/get-target-guest-info/" >-- Get Target Guest Info</option>
-      <option value="/get-started/configuration/configure-tinyvmi-with-target-guest-info/" >-- Configure TinyVMI with Target Info</option>
+    <option value="/quick-start/" >
+   Quick Start</option> 
   
-      <option value="/get-started/run-tinyvmi/" >- Build and Run TinyVMI</option>
-  
+    <option value="/step-by-step/" >
+   Step by Step</option>
 
 
 
@@ -217,7 +221,7 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/get-started/" title="Get Started" style="margin-right: 0px;"><label>Get Started</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-next" href="/quick-start/" title="Quick Start" style="margin-right: 0px;"><label>Quick Start</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -243,7 +247,7 @@
 
 
   
-    Create a content/_footer.md file to customize the footer content
+    
   
 
 

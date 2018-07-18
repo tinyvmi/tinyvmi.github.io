@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Get Started on TinyVMI Documentation</title>
-    <link>https://tinyvmi.github.io/get-started/</link>
-    <description>Recent content in Get Started on TinyVMI Documentation</description>
+    <title>Step by Step on TinyVMI Documentation</title>
+    <link>https://tinyvmi.github.io/step-by-step/</link>
+    <description>Recent content in Step by Step on TinyVMI Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Jun 2018 14:22:24 -0400</lastBuildDate>
     
-	<atom:link href="https://tinyvmi.github.io/get-started/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tinyvmi.github.io/step-by-step/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Install Xen With FLASK</title>
-      <link>https://tinyvmi.github.io/get-started/install-xen-with-flask/</link>
+      <link>https://tinyvmi.github.io/step-by-step/install-xen-with-flask/</link>
       <pubDate>Mon, 04 Jun 2018 14:22:24 -0400</pubDate>
       
-      <guid>https://tinyvmi.github.io/get-started/install-xen-with-flask/</guid>
+      <guid>https://tinyvmi.github.io/step-by-step/install-xen-with-flask/</guid>
       <description>Overview The following steps are tested with Xen 4.10.0, other Xen versions with 4.8 and onward should also be fine. The tested host OSes include Ubuntu 16.04, and 18.04. Other Linux based system should be OK as long as they are compatitable with Xen hypervisor.
 Steps  1. Install Prerequest Packages of Xen
  2. Install Xen
@@ -26,10 +26,10 @@ Steps  1. Install Prerequest Packages of Xen
     
     <item>
       <title>Build and Run TinyVMI</title>
-      <link>https://tinyvmi.github.io/get-started/run-tinyvmi/</link>
+      <link>https://tinyvmi.github.io/step-by-step/run-tinyvmi/</link>
       <pubDate>Mon, 04 Jun 2018 14:43:03 -0400</pubDate>
       
-      <guid>https://tinyvmi.github.io/get-started/run-tinyvmi/</guid>
+      <guid>https://tinyvmi.github.io/step-by-step/run-tinyvmi/</guid>
       <description>Tips You can directly run a handy bash script in tinyvmi/ directory:
 To build and run TinyVMI altogether in a single command:
 cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh build  Or to only make TinyVMI without creating VM:

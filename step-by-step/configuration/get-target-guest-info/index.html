@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.41-DEV" />
-<title>Categories :: TinyVMI Documentation</title>
+<title>Get Target Guest Info :: TinyVMI Documentation</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -30,7 +30,7 @@
 
     
   </head>
-  <body data-url="/categories/">
+  <body data-url="/step-by-step/configuration/get-target-guest-info/">
     
       <header>
   <div class="logo">
@@ -69,10 +69,11 @@
       <a href="/quick-start/">Quick Start</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/step-by-step/" class="dd-item haschildren
+    <li data-nav-id="/step-by-step/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/step-by-step/">Step by Step</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/step-by-step/">Step by Step</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/step-by-step/install-xen-with-flask/" class="dd-item">
@@ -82,7 +83,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/step-by-step/configuration/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/step-by-step/configuration/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/step-by-step/configuration/">Configure TinyVMI</a>
@@ -110,7 +111,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/step-by-step/configuration/get-target-guest-info/" class="dd-item">
+      <li data-nav-id="/step-by-step/configuration/get-target-guest-info/" class="dd-item active">
         <div>
           <a href="/step-by-step/configuration/get-target-guest-info/">
             Get Target Guest Info
@@ -165,7 +166,19 @@
    Quick Start</option> 
   
     <option value="/step-by-step/" >
-   Step by Step</option>
+   Step by Step</option> 
+      <option value="/step-by-step/install-xen-with-flask/" >- Install Xen With FLASK</option>
+    <option value="/step-by-step/configuration/" >
+  - 
+   Configure TinyVMI</option> 
+      <option value="/step-by-step/configuration/update-xsm-flask-policy/" >-- Update XSM FLASK Policy</option>
+      <option value="/step-by-step/configuration/update-stubdom-makefile/" >-- Update Stubdom Makefile</option>
+      <option value="/step-by-step/configuration/update-minios-makefile/" >-- Update Mini-OS Makefile</option>
+      <option value="/step-by-step/configuration/get-target-guest-info/"  selected>-- Get Target Guest Info</option>
+      <option value="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/" >-- Configure TinyVMI with Target Info</option>
+  
+      <option value="/step-by-step/run-tinyvmi/" >- Build and Run TinyVMI</option>
+  
 
 
 
@@ -188,32 +201,64 @@
       </div>
     
 
-    <h1>Categories</h1>
+    <h1>Get Target Guest Info</h1>
+    
     
     
     
 
+<h4 id="guest-start">Start Target VM with FLASK label</h4>
 
+<p>According to our setup in <a href="https://tinyvmi.github.io/step-by-step/configuration/update-xsm-flask-policy/">Update XSM FLASK Policy</a>, a VM labeled with <code>domU</code> has priviledges to intropsect another domU&rsquo;s physical memory. Now we can label TinyVMI with <code>domU</code> to grant the VM of TinyVMI with those privileges.</p>
 
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
+<p>Change xl config file for the target VM. Add the following line to this file:</p>
+
+<pre><code>seclabel='system_u:system_r:domU_t'
+</code></pre>
+
+<p>Now you can start target VM by running <code>xl create &lt;domain_config_file&gt;</code></p>
+
+<h4 id="guest-offset">Get Guest Kernel Offsets</h4>
+
+<div class="panel panel-success">
+	<div class="panel-heading">NOTE</div>
+	<div class="panel-body"><p>This method is totally derived from <a href="https://github.com/libvmi/libvmi/tree/master/tools/linux-offset-finder">how LibVMI get info from guest kernel</a>.</p>
+</div>
 	
-	<span class="page-number">Page 1 of 0</span>
-	
-</nav>
-
 </div>
 
 
+<p>Download the <a href="https://github.com/libvmi/libvmi/tree/master/tools/linux-offset-finder">linux-offset-finder</a> from LibVMI repo. Then you can use this program to get the offset values needed for
+the ~/etc/libvmi.conf file.  To use, follow the steps below.</p>
 
-<div style="margin-bottom:2rem"></div>
+<ol>
+<li>Copy the files in this directory to the target VM.</li>
+<li>Log into the target VM as root.</li>
+<li>cd into the directory with this program, then run make.</li>
+<li>insmod findoffsets.ko</li>
+<li>if you are logged into the console, you will see the output. Otherwise, see /var/log/syslog or dmesg for the output.</li>
+<li>rmmod findoffsets</li>
+<li>copy the output into your ~/etc/libvmi.conf file in dom0, be sure to update the domain name and sysmap location.</li>
+</ol>
 
-<nav class="pagination" role="navigation">
+<h4 id="guest-sysmap">Get Guest Kernel Sysmap</h4>
+
+<p>Copy the system map file to dom0. For example, on a guest VM running with Ubuntu 16.04, you can find system map file at /boot/Sysmap.map-&lt;kernel_version&gt;, then copy it in ~/etc/Sysmap.map-&lt;kernel_version&gt;.  The current kernel_verion can be got by run <code>uname -r</code>.</p>
+
+<div class="panel panel-success">
+	<div class="panel-heading">Summary</div>
+	<div class="panel-body"><p>Now we have the following info from the target guest VM:</p>
+
+<ol>
+<li>target VM name and ID.</li>
+<li>~/etc/libvmi.conf. Acquired by <code>linux-offset-finder</code> in target VM.</li>
+<li>~/etc/System.map-&lt;kernel_version&gt;. Copied from /boot/System.map-* on target VM.</li>
+</ol>
+
+<p>Next, we will use those info to configure TinyVMI.</p>
+</div>
 	
-	<span class="page-number">Page 1 of 0</span>
-	
-</nav>
-
+</div>
 
 
 
@@ -221,7 +266,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/quick-start/" title="Quick Start" style="margin-right: 0px;"><label>Quick Start</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/step-by-step/configuration/update-minios-makefile/" title="Update Mini-OS Makefile"> <i class="fa fa-chevron-left"></i><label>Update Mini-OS Makefile</label></a>
+    <a class="nav nav-next" href="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/" title="Configure TinyVMI with Target Info" style="margin-right: 0px;"><label>Configure TinyVMI with Target Info</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -235,9 +281,13 @@
     
 
   
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 06/04/2018
+    </div>
+    
 
     <div class="github-link">
-      <a href="https://github.com/tinyvmi/tinyvmi-docs-hugo/edit/master/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/tinyvmi/tinyvmi-docs-hugo/edit/master/content/step-by-step/configuration/get-target-guest-info.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

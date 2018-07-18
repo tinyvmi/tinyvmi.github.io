@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TinyVMI Documentation</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.41-DEV" />
+<title>Update Stubdom Makefile :: TinyVMI Documentation</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/tinyvmi.github.io\/";
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79101-13', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+  </head>
+  <body data-url="/step-by-step/configuration/update-stubdom-makefile/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://tinyvmi.github.io/">TinyVMI Documentation</a>
+  
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/tinyvmi/tinyvmi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://tinyvmi.github.io/gsoc-blog"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>GSoC 2018 Blog</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/" class="dd-item">
+          <a href="/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/quick-start/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/quick-start/">Quick Start</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/step-by-step/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/step-by-step/">Step by Step</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/step-by-step/install-xen-with-flask/" class="dd-item">
+        <div>
+          <a href="/step-by-step/install-xen-with-flask/">
+            Install Xen With FLASK
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/step-by-step/configuration/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/step-by-step/configuration/">Configure TinyVMI</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/step-by-step/configuration/update-xsm-flask-policy/" class="dd-item">
+        <div>
+          <a href="/step-by-step/configuration/update-xsm-flask-policy/">
+            Update XSM FLASK Policy
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/step-by-step/configuration/update-stubdom-makefile/" class="dd-item active">
+        <div>
+          <a href="/step-by-step/configuration/update-stubdom-makefile/">
+            Update Stubdom Makefile
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/step-by-step/configuration/update-minios-makefile/" class="dd-item">
+        <div>
+          <a href="/step-by-step/configuration/update-minios-makefile/">
+            Update Mini-OS Makefile
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/step-by-step/configuration/get-target-guest-info/" class="dd-item">
+        <div>
+          <a href="/step-by-step/configuration/get-target-guest-info/">
+            Get Target Guest Info
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/" class="dd-item">
+        <div>
+          <a href="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/">
+            Configure TinyVMI with Target Info
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/step-by-step/run-tinyvmi/" class="dd-item">
+        <div>
+          <a href="/step-by-step/run-tinyvmi/">
+            Build and Run TinyVMI
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+
+<a class="github-button" href="https://github.com/tinyvmi/tinyvmi/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download vjeantet/hugo-theme-docdock on GitHub">Download</a>
+
+
+<a class="github-button" href="https://github.com/tinyvmi/tinyvmi" data-icon="octicon-star" data-show-count="false" aria-label="Star vjeantet/hugo-theme-docdock on GitHub">Star</a>
+
+
+<a class="github-button" href="https://github.com/tinyvmi/tinyvmi/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork vjeantet/hugo-theme-docdock on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/quick-start/" >
+   Quick Start</option> 
+  
+    <option value="/step-by-step/" >
+   Step by Step</option> 
+      <option value="/step-by-step/install-xen-with-flask/" >- Install Xen With FLASK</option>
+      <option value="/step-by-step/run-tinyvmi/" >- Build and Run TinyVMI</option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/tinyvmi.github.io\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Update Stubdom Makefile</h1>
+    
+    
+    
+    <p>TinyVMI is developed as a <a href="https://wiki.xenproject.org/wiki/StubDom">stubdom</a> running on top of Xen hypervisor.</p>
+
+<p>The following changes are made to <code>xen-src/stubdom/Makefile</code> to support the compilation of TinyVMI with the necessary targets and library dependences (<a href="https://github.com/tinyvmi/tinyvmi/tree/master/docs/xen-stubdom/example_makefile">full makefile example</a>):</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-patch" data-lang="patch"><span style="color:#f92672">--- stubdom/Makefile.old	2017-12-13 06:37:59.000000000 -0500
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ stubdom/Makefile	2018-07-02 19:46:48.999545378 -0400
+</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -61,7 +61,7 @@
+</span><span style="color:#75715e"></span> 
+ TARGET_LDFLAGS += -nostdlib -L$(CROSS_PREFIX)/$(GNU_TARGET_ARCH)-xen-elf/lib
+ 
+<span style="color:#f92672">-TARGETS=$(STUBDOM_TARGETS)
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+TARGETS=$(STUBDOM_TARGETS) c xenstore tinyvmi
+</span><span style="color:#a6e22e"></span> 
+ STUBDOMPATH=&#34;stubdompath.sh&#34;
+ genpath-target = $(call buildmakevars2file,$(STUBDOMPATH))
+<span style="color:#75715e">@@ -101,6 +101,103 @@
+</span><span style="color:#75715e"></span> 	  $(MAKE) DESTDIR= &amp;&amp; \
+ 	  $(MAKE) DESTDIR= install )
+ 
+<span style="color:#a6e22e">+##############
+</span><span style="color:#a6e22e">+# Cross-json-c
+</span><span style="color:#a6e22e">+##############
+</span><span style="color:#a6e22e">+# https://s3.amazonaws.com/json-c_releases/releases/json-c-0.13.1.tar.gz
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+JSON_C_URL=&#34;https://s3.amazonaws.com/json-c_releases/releases&#34;
+</span><span style="color:#a6e22e">+JSON_C_VERSION=0.13
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+# TARGET_CFLAGS += -Wno-error=implicit-fallthrough -Wno-error=declaration-after-statement 
+</span><span style="color:#a6e22e">+# TARGET_CFLAGS += -Wno-error=strict-prototypes
+</span><span style="color:#a6e22e">+# TARGET_CFLAGS += -Wno-error=implicit-function-declaration 
+</span><span style="color:#a6e22e">+TARGET_CFLAGS += -Wno-error
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+json-c-$(JSON_C_VERSION).tar.gz:
+</span><span style="color:#a6e22e">+	$(FETCHER) $@ $(JSON_C_URL)/$@
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+json-c-$(XEN_TARGET_ARCH): json-c-$(JSON_C_VERSION).tar.gz
+</span><span style="color:#a6e22e">+	tar xzf $&lt;
+</span><span style="color:#a6e22e">+	mv json-c-$(JSON_C_VERSION) $@
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+JSON_C_STAMPFILE=$(CROSS_ROOT)/$(GNU_TARGET_ARCH)-xen-elf/lib/libjson-c.a
+</span><span style="color:#a6e22e">+.PHONY: cross-json-c
+</span><span style="color:#a6e22e">+cross-json-c: $(JSON_C_STAMPFILE)
+</span><span style="color:#a6e22e">+$(JSON_C_STAMPFILE): json-c-$(XEN_TARGET_ARCH) $(NEWLIB_STAMPFILE)
+</span><span style="color:#a6e22e">+	( cd json-c-$(XEN_TARGET_ARCH) &amp;&amp; \
+</span><span style="color:#a6e22e">+	  sh autogen.sh &amp;&amp; \
+</span><span style="color:#a6e22e">+	  CFLAGS=&#34;$(TARGET_CPPFLAGS) $(TARGET_CFLAGS)&#34; CC=$(CC) \
+</span><span style="color:#a6e22e">+	  ./configure --disable-shared --disable-threading \
+</span><span style="color:#a6e22e">+		  --prefix=$(CROSS_PREFIX)/$(GNU_TARGET_ARCH)-xen-elf \
+</span><span style="color:#a6e22e">+		  --exec-prefix=$(CROSS_PREFIX)/$(GNU_TARGET_ARCH)-xen-elf \
+</span><span style="color:#a6e22e">+		  --host=$(GNU_TARGET_ARCH)-xen-elf &amp;&amp; \
+</span><span style="color:#a6e22e">+	  $(MAKE) DESTDIR= &amp;&amp; \
+</span><span style="color:#a6e22e">+	  $(MAKE) DESTDIR= install )
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+##############
+</span><span style="color:#a6e22e">+# Cross-jansson
+</span><span style="color:#a6e22e">+##############
+</span><span style="color:#a6e22e">+# http://www.digip.org/jansson/releases/jansson-2.11.tar.gz
+</span><span style="color:#a6e22e">+JANSSON_URL=&#34;http://www.digip.org/jansson/releases&#34;
+</span><span style="color:#a6e22e">+JANSSON_VERSION=2.11
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+# TARGET_CFLAGS += -Wno-error=implicit-fallthrough -Wno-error=declaration-after-statement 
+</span><span style="color:#a6e22e">+# TARGET_CFLAGS += -Wno-error=strict-prototypes
+</span><span style="color:#a6e22e">+# TARGET_CFLAGS += -Wno-error=implicit-function-declaration 
+</span><span style="color:#a6e22e">+TARGET_CFLAGS += -Wno-error
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+jansson-$(JANSSON_VERSION).tar.gz:
+</span><span style="color:#a6e22e">+	$(FETCHER) $@ $(JANSSON_URL)/$@
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+jansson-$(XEN_TARGET_ARCH): jansson-$(JANSSON_VERSION).tar.gz
+</span><span style="color:#a6e22e">+	tar xzf $&lt;
+</span><span style="color:#a6e22e">+	mv jansson-$(JANSSON_VERSION) $@
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+JANSSON_STAMPFILE=$(CROSS_ROOT)/$(GNU_TARGET_ARCH)-xen-elf/lib/libjansson.a
+</span><span style="color:#a6e22e">+.PHONY: cross-jansson
+</span><span style="color:#a6e22e">+cross-jansson: $(JANSSON_STAMPFILE)
+</span><span style="color:#a6e22e">+$(JANSSON_STAMPFILE): jansson-$(XEN_TARGET_ARCH) $(NEWLIB_STAMPFILE)
+</span><span style="color:#a6e22e">+	( cd jansson-$(XEN_TARGET_ARCH) &amp;&amp; \
+</span><span style="color:#a6e22e">+	  CFLAGS=&#34;$(TARGET_CPPFLAGS) $(TARGET_CFLAGS)&#34; CC=$(CC) \
+</span><span style="color:#a6e22e">+	  ./configure --prefix=$(CROSS_PREFIX)/$(GNU_TARGET_ARCH)-xen-elf \
+</span><span style="color:#a6e22e">+		  --host=$(GNU_TARGET_ARCH)-xen-elf &amp;&amp; \
+</span><span style="color:#a6e22e">+	  $(MAKE) DESTDIR= &amp;&amp; \
+</span><span style="color:#a6e22e">+	  $(MAKE) DESTDIR= install )
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+##############
+</span><span style="color:#a6e22e">+# Cross-iconv
+</span><span style="color:#a6e22e">+##############
+</span><span style="color:#a6e22e">+# https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz
+</span><span style="color:#a6e22e">+ICONV_URL=&#34;https://ftp.gnu.org/pub/gnu/libiconv&#34;
+</span><span style="color:#a6e22e">+ICONV_VERSION=1.15
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+# TARGET_CFLAGS += -Wno-error=implicit-fallthrough -Wno-error=declaration-after-statement 
+</span><span style="color:#a6e22e">+# TARGET_CFLAGS += -Wno-error=strict-prototypes
+</span><span style="color:#a6e22e">+# TARGET_CFLAGS += -Wno-error=implicit-function-declaration 
+</span><span style="color:#a6e22e">+TARGET_CFLAGS += -Wno-error
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+libiconv-$(ICONV_VERSION).tar.gz:
+</span><span style="color:#a6e22e">+	$(FETCHER) $@ $(ICONV_URL)/$@
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+iconv-$(XEN_TARGET_ARCH): libiconv-$(ICONV_VERSION).tar.gz
+</span><span style="color:#a6e22e">+	tar xzf $&lt;
+</span><span style="color:#a6e22e">+	mv libiconv-$(ICONV_VERSION) $@
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+ICONV_STAMPFILE=$(CROSS_ROOT)/$(GNU_TARGET_ARCH)-xen-elf/lib/libiconv.a
+</span><span style="color:#a6e22e">+.PHONY: cross-iconv
+</span><span style="color:#a6e22e">+cross-iconv: $(ICONV_STAMPFILE)
+</span><span style="color:#a6e22e">+$(ICONV_STAMPFILE): iconv-$(XEN_TARGET_ARCH) $(NEWLIB_STAMPFILE)
+</span><span style="color:#a6e22e">+	( cd iconv-$(XEN_TARGET_ARCH) &amp;&amp; \
+</span><span style="color:#a6e22e">+	  CFLAGS=&#34;$(TARGET_CPPFLAGS) $(TARGET_CFLAGS)&#34; CC=$(CC) \
+</span><span style="color:#a6e22e">+	  ./configure --prefix=$(CROSS_PREFIX)/$(GNU_TARGET_ARCH)-xen-elf \
+</span><span style="color:#a6e22e">+		  --host=$(GNU_TARGET_ARCH)-xen-elf \
+</span><span style="color:#a6e22e">+		  --build=x86_64-linux-gnu \
+</span><span style="color:#a6e22e">+		  --enable-static \
+</span><span style="color:#a6e22e">+		  &amp;&amp; \
+</span><span style="color:#a6e22e">+	  $(MAKE) DESTDIR= &amp;&amp; \
+</span><span style="color:#a6e22e">+	  $(MAKE) DESTDIR= install )
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e"></span> ############
+ # Cross-zlib
+ ############
+<span style="color:#75715e">@@ -493,6 +590,20 @@
+</span><span style="color:#75715e"></span> c: $(CROSS_ROOT) c-minios-config.mk
+ 	CPPFLAGS=&#34;$(TARGET_CPPFLAGS) $(shell cat c-minios-config.mk)&#34; CFLAGS=&#34;$(TARGET_CFLAGS)&#34; $(MAKE) DESTDIR= -C $@ LWIPDIR=$(CURDIR)/lwip-$(XEN_TARGET_ARCH) 
+ 
+<span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+###
+</span><span style="color:#a6e22e">+# tinyvmi based on c but no glib, 2014.10.27
+</span><span style="color:#a6e22e">+###
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+tinyvmi-minios-config.mk: $(CURDIR)/tinyvmi/minios.cfg
+</span><span style="color:#a6e22e">+	MINIOS_CONFIG=&#34;$&lt;&#34; CONFIG_FILE=&#34;$(CURDIR)/$@&#34; $(MAKE) DESTDIR= -C $(MINI_OS) config
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+.PHONY: tinyvmi
+</span><span style="color:#a6e22e">+# tinyvmi: cross-iconv cross-jansson cross-json-c cross-newlib $(CROSS_ROOT) tinyvmi-minios-config.mk
+</span><span style="color:#a6e22e">+tinyvmi: cross-jansson cross-json-c cross-newlib $(CROSS_ROOT) tinyvmi-minios-config.mk
+</span><span style="color:#a6e22e">+	CPPFLAGS=&#34;$(TARGET_CPPFLAGS) $(shell cat c-minios-config.mk)&#34; CFLAGS=&#34;$(TARGET_CFLAGS)&#34; $(MAKE) DESTDIR= -C $@ LWIPDIR=$(CURDIR)/lwip-$(XEN_TARGET_ARCH) 
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e"></span> ######
+ # VTPM
+ ######
+<span style="color:#75715e">@@ -565,6 +676,13 @@
+</span><span style="color:#75715e"></span> c-stubdom: mini-os-$(XEN_TARGET_ARCH)-c lwip-$(XEN_TARGET_ARCH) libxc c
+ 	DEF_CPPFLAGS=&#34;$(TARGET_CPPFLAGS)&#34; DEF_CFLAGS=&#34;$(TARGET_CFLAGS)&#34; DEF_LDFLAGS=&#34;$(TARGET_LDFLAGS)&#34; MINIOS_CONFIG=&#34;$(CURDIR)/c/minios.cfg&#34; $(MAKE) DESTDIR= -C $(MINI_OS) OBJ_DIR=$(CURDIR)/$&lt; LWIPDIR=$(CURDIR)/lwip-$(XEN_TARGET_ARCH) APP_OBJS=$(CURDIR)/c/main.a
+ 
+<span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+## added 20180305, lele
+</span><span style="color:#a6e22e">+.PHONY: tinyvmi-stubdom
+</span><span style="color:#a6e22e">+tinyvmi-stubdom: mini-os-$(XEN_TARGET_ARCH)-tinyvmi lwip-$(XEN_TARGET_ARCH) libxc xenstore tinyvmi
+</span><span style="color:#a6e22e">+	@echo &#34;LELE:target $@ :L563&#34;
+</span><span style="color:#a6e22e">+	DEF_CPPFLAGS=&#34;$(TARGET_CPPFLAGS)&#34; DEF_CFLAGS=&#34;$(TARGET_CFLAGS)&#34; DEF_LDFLAGS=&#34;$(TARGET_LDFLAGS)&#34; MINIOS_CONFIG=&#34;$(CURDIR)/tinyvmi/minios.cfg&#34; $(MAKE) DESTDIR= -C $(MINI_OS) OBJ_DIR=$(CURDIR)/$&lt; LWIPDIR=$(CURDIR)/lwip-$(XEN_TARGET_ARCH) APP_OBJS=$(CURDIR)/tinyvmi/main.a
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e"></span> .PHONY: vtpm-stubdom
+ vtpm-stubdom: mini-os-$(XEN_TARGET_ARCH)-vtpm vtpm
+ 	DEF_CPPFLAGS=&#34;$(TARGET_CPPFLAGS)&#34; DEF_CFLAGS=&#34;$(TARGET_CFLAGS)&#34; DEF_LDFLAGS=&#34;$(TARGET_LDFLAGS)&#34; MINIOS_CONFIG=&#34;$(CURDIR)/vtpm/minios.cfg&#34; $(MAKE) -C $(MINI_OS) OBJ_DIR=$(CURDIR)/$&lt; APP_OBJS=&#34;$(CURDIR)/vtpm/vtpm.a&#34; APP_LDLIBS=&#34;-ltpm -ltpm_crypto -lgmp -lpolarssl&#34;
+<span style="color:#75715e">@@ -604,6 +722,8 @@
+</span><span style="color:#75715e"></span> 
+ install-c: c-stubdom
+ 
+<span style="color:#a6e22e">+install-tinyvmi: tinyvmi-stubdom
+</span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e"></span> install-caml: caml-stubdom
+ 
+ install-xenstore: xenstore-stubdom
+<span style="color:#75715e">@@ -658,6 +778,7 @@
+</span><span style="color:#75715e"></span> clean:
+ 	rm -fr mini-os-$(XEN_TARGET_ARCH)-ioemu
+ 	rm -fr mini-os-$(XEN_TARGET_ARCH)-c
+<span style="color:#a6e22e">+	rm -fr mini-os-$(XEN_TARGET_ARCH)-tinyvmi #lele, 2018.02.18
+</span><span style="color:#a6e22e"></span> 	rm -fr mini-os-$(XEN_TARGET_ARCH)-caml
+ 	rm -fr mini-os-$(XEN_TARGET_ARCH)-grub
+ 	rm -fr mini-os-$(XEN_TARGET_ARCH)-xenstore
+</code></pre></div>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/step-by-step/configuration/update-xsm-flask-policy/" title="Update XSM FLASK Policy"> <i class="fa fa-chevron-left"></i><label>Update XSM FLASK Policy</label></a>
+    <a class="nav nav-next" href="/step-by-step/configuration/update-minios-makefile/" title="Update Mini-OS Makefile" style="margin-right: 0px;"><label>Update Mini-OS Makefile</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+  
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 06/04/2018
+    </div>
+    
+
+    <div class="github-link">
+      <a href="https://github.com/tinyvmi/tinyvmi-docs-hugo/edit/master/content/step-by-step/configuration/update-stubdom-makefile.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

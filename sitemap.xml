@@ -3,13 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://tinyvmi.github.io/quick-start/</loc>
+    <loc>https://tinyvmi.github.io/quick-start-windows/</loc>
     <lastmod>2018-07-17T12:56:10-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://tinyvmi.github.io/step-by-step/install-xen-with-flask/</loc>
     <lastmod>2018-06-04T14:22:24-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tinyvmi.github.io/quick-start-linux/</loc>
+    <lastmod>2018-08-05T12:56:10-04:00</lastmod>
   </url>
   
   <url>
@@ -23,13 +28,13 @@
   </url>
   
   <url>
-    <loc>https://tinyvmi.github.io/step-by-step/</loc>
-    <lastmod>2018-06-04T14:22:24-04:00</lastmod>
+    <loc>https://tinyvmi.github.io/step-by-step/run-tinyvmi/</loc>
+    <lastmod>2018-06-04T14:43:03-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tinyvmi.github.io/step-by-step/run-tinyvmi/</loc>
-    <lastmod>2018-06-04T14:43:03-04:00</lastmod>
+    <loc>https://tinyvmi.github.io/step-by-step/</loc>
+    <lastmod>2018-06-04T14:22:24-04:00</lastmod>
   </url>
   
   <url>
@@ -43,7 +48,7 @@
   </url>
   
   <url>
-    <loc>https://tinyvmi.github.io/step-by-step/configuration/get-target-guest-info/</loc>
+    <loc>https://tinyvmi.github.io/step-by-step/configuration/get-target-guest-info-linux/</loc>
     <lastmod>2018-06-04T22:24:45-04:00</lastmod>
   </url>
   

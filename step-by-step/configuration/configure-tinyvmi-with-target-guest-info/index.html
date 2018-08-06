@@ -63,13 +63,19 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/quick-start/" class="dd-item alwaysopen
+    <li data-nav-id="/quick-start-windows/" class="dd-item alwaysopen
         ">
       <div>
-      <a href="/quick-start/">Quick Start</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/quick-start-windows/">Quick Start with Windows Guest</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/step-by-step/" class="dd-item parent haschildren
+    <li data-nav-id="/quick-start-linux/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/quick-start-linux/">Quick Start with Linux Guest</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/step-by-step/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/step-by-step/">Step by Step</a>
@@ -79,7 +85,7 @@
       <li data-nav-id="/step-by-step/install-xen-with-flask/" class="dd-item">
         <div>
           <a href="/step-by-step/install-xen-with-flask/">
-            Install Xen With FLASK
+            Install Xen With XSM FLASK Policy
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -111,10 +117,10 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/step-by-step/configuration/get-target-guest-info/" class="dd-item">
+      <li data-nav-id="/step-by-step/configuration/get-target-guest-info-linux/" class="dd-item">
         <div>
-          <a href="/step-by-step/configuration/get-target-guest-info/">
-            Get Target Guest Info
+          <a href="/step-by-step/configuration/get-target-guest-info-linux/">
+            Get Target Guest Info (Linux)
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -162,19 +168,22 @@
       <center>Navigation : 
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/quick-start/" >
-   Quick Start</option> 
+    <option value="/quick-start-windows/" >
+   Quick Start with Windows Guest</option> 
+  
+    <option value="/quick-start-linux/" >
+   Quick Start with Linux Guest</option> 
   
     <option value="/step-by-step/" >
    Step by Step</option> 
-      <option value="/step-by-step/install-xen-with-flask/" >- Install Xen With FLASK</option>
+      <option value="/step-by-step/install-xen-with-flask/" >- Install Xen With XSM FLASK Policy</option>
     <option value="/step-by-step/configuration/" >
   - 
    Configure TinyVMI</option> 
       <option value="/step-by-step/configuration/update-xsm-flask-policy/" >-- Update XSM FLASK Policy</option>
       <option value="/step-by-step/configuration/update-stubdom-makefile/" >-- Update Stubdom Makefile</option>
       <option value="/step-by-step/configuration/update-minios-makefile/" >-- Update Mini-OS Makefile</option>
-      <option value="/step-by-step/configuration/get-target-guest-info/" >-- Get Target Guest Info</option>
+      <option value="/step-by-step/configuration/get-target-guest-info-linux/" >-- Get Target Guest Info (Linux)</option>
       <option value="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/"  selected>-- Configure TinyVMI with Target Info</option>
   
       <option value="/step-by-step/run-tinyvmi/" >- Build and Run TinyVMI</option>
@@ -218,75 +227,68 @@
 
 <p>run</p>
 
-<pre><code>xxd -i ~/etc/System.map-\&lt;kernel_version&gt; &gt; ~/etc/target_libvmi_sysmap.c
+<pre><code>xxd -i ~/etc/System.map-\&lt;kernel_version&gt; &gt; ~/etc/target_libvmi_sym.c
 </code></pre>
 
-<p>Then, copy the following code to new file <code>~/etc/target_libvmi_sysmap.h</code>:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#75715e">#ifndef TARGET_LIBVMI_CONF_SYSMAP_H
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TARGET_LIBVMI_CONF_SYSMAP_H
+<p>Then, copy the following code to new file <code>~/etc/target_libvmi_sym.h</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef TARGET_LIBVMI_CONF_SYM_H
+</span><span style="color:#75715e">#define TARGET_LIBVMI_CONF_SYM_H
 </span><span style="color:#75715e"></span>
 
-    <span style="color:#75715e">/**
-</span><span style="color:#75715e">    * define system_map_string for Linux
-</span><span style="color:#75715e">    * change this if use another system map
-</span><span style="color:#75715e">    * all the System_map_* variables are declared here, and
-</span><span style="color:#75715e">    * defined at file /tiny-vmi/config/libvmi_conf_file_sysmap_*.c
-</span><span style="color:#75715e">    * the definition is generated by xxd command which coverts a file
-</span><span style="color:#75715e">    * to ASCII string codes: xxd -i System_map_*
+<span style="color:#75715e">/**
+</span><span style="color:#75715e">* define system_map_string for Linux
+</span><span style="color:#75715e">* change this if use another system map
+</span><span style="color:#75715e">* all the System_map_* variables are declared here, and
+</span><span style="color:#75715e">* defined at file /tiny-vmi/config/target_conf/target_libvmi_sym.c
+</span><span style="color:#75715e">* the definition is generated by xxd command which coverts a file
+</span><span style="color:#75715e">* to ASCII string codes: xxd -i System_map_*
 </span><span style="color:#75715e">
-</span><span style="color:#75715e">    */</span>
+</span><span style="color:#75715e">*/</span>
 
 
-    <span style="color:#75715e">#define linux_system_map_string System_map_4_4_0_101_generic
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define linux_system_map_string_len System_map_4_4_0_101_generic_len
+<span style="color:#75715e">#define linux_system_map_string System_map_4_4_0_101_generic
+</span><span style="color:#75715e">#define linux_system_map_string_len System_map_4_4_0_101_generic_len
 </span><span style="color:#75715e"></span>
-    <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> System_map_4_4_0_101_generic[];
-    <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> System_map_4_4_0_101_generic_len;
+<span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> System_map_4_4_0_101_generic[];
+<span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> System_map_4_4_0_101_generic_len;
 
 
-    <span style="color:#75715e">#define linux_system_map_string_SRC_FILE &#34;/tiny-vmi/config/target_libvmi_sysmap.c&#34;
+<span style="color:#75715e">#define linux_system_map_string_SRC_FILE &#34;string&#34;
 </span><span style="color:#75715e"></span>
-    <span style="color:#75715e">#endif // TARGET_LIBVMI_CONF_SYSMAP_H</span></code></pre></div>
-
-<p>In the above file, replace variable <code>System_map_4_4_0_101_generic</code> and <code>System_map_4_4_0_101_generic_len</code> with your own variable names generated in the last step. You can run <code>head ~/etc/target_libvmi_sysmap.c</code> or <code>tail ~/etc/target_libvmi_sysmap.c</code>  to find the names.</p>
+<span style="color:#75715e">#endif // TARGET_LIBVMI_CONF_SYM_H</span></code></pre></div>
+<p>In the above file, replace variable <code>System_map_4_4_0_101_generic</code> and <code>System_map_4_4_0_101_generic_len</code> with your own variable names generated in the last step. You can run <code>head ~/etc/target_libvmi_sym.c</code> or <code>tail ~/etc/target_libvmi_sym.c</code>  to find the names.</p>
 
 <h4 id="3-compile-with-tinyvmi">3. Compile with TinyVMI</h4>
 
 <p>Then, create a new directory in tinyvmi/tiny-vmi/config/target_conf_examples/, say <code>my_conf_dir/</code>, and run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd xen-src/stubdom/tinyvmi/tiny-vmi/config/target_conf_examples/my_conf_dir/
 
-<pre><code>cd xen-src/stubdom/tinyvmi/tiny-vmi/config/
+cp ~/etc/libvmi.conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    ~/etc/System.map* <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    ~/etc/target_* <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    .
 
-cp ~/etc/libvmi.conf \
-    ~/etc/System.map* \
-    ~/etc/target_* \
-    ./target_conf_examples/my_conf_dir/
-
-cd target_conf/
+cd ../../target_conf/
 rm *
-ln -s ../target_conf_examples/my_conf_dir/* .
-</code></pre>
-
+ln -s ../target_conf_examples/my_conf_dir/* .</code></pre></div>
 <h4 id="4-update-domain-id-h">4. Update domain_id.h</h4>
 
 <p>Currently, TinyVMI cannot convert domain string name to domain ID by querying Xenstore.
 Therefore, a hardcoded domain ID is required. To do so, change DOMAIN_ID and DOMAIN_NAME macro definition in file <code>tinyvmi/include/domain_id.h</code>. For example:</p>
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef DOMAIN_ID_H
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef DOMAIN_ID_H
 </span><span style="color:#75715e">#define DOMAIN_ID_H
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">#define DOMAIN_ID  1
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">#define DOMAIN_NAME &#34;xen16a&#34;
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">#endif // DOMAIN_ID_H</span></code></pre></div></p>
-
+<span style="color:#75715e">#endif // DOMAIN_ID_H</span></code></pre></div>
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/step-by-step/configuration/get-target-guest-info/" title="Get Target Guest Info"> <i class="fa fa-chevron-left"></i><label>Get Target Guest Info</label></a>
+<a class="nav nav-prev" href="/step-by-step/configuration/get-target-guest-info-linux/" title="Get Target Guest Info (Linux)"> <i class="fa fa-chevron-left"></i><label>Get Target Guest Info (Linux)</label></a>
     <a class="nav nav-next" href="/step-by-step/run-tinyvmi/" title="Build and Run TinyVMI" style="margin-right: 0px;"><label>Build and Run TinyVMI</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 

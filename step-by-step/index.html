@@ -63,13 +63,19 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/quick-start/" class="dd-item alwaysopen
+    <li data-nav-id="/quick-start-windows/" class="dd-item alwaysopen
         ">
       <div>
-      <a href="/quick-start/">Quick Start</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/quick-start-windows/">Quick Start with Windows Guest</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/step-by-step/" class="dd-item parent active haschildren
+    <li data-nav-id="/quick-start-linux/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/quick-start-linux/">Quick Start with Linux Guest</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/step-by-step/" class="dd-item parent active alwaysopen haschildren
         ">
       <div>
       <a href="/step-by-step/">Step by Step</a>
@@ -79,7 +85,7 @@
       <li data-nav-id="/step-by-step/install-xen-with-flask/" class="dd-item">
         <div>
           <a href="/step-by-step/install-xen-with-flask/">
-            Install Xen With FLASK
+            Install Xen With XSM FLASK Policy
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -111,10 +117,10 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/step-by-step/configuration/get-target-guest-info/" class="dd-item">
+      <li data-nav-id="/step-by-step/configuration/get-target-guest-info-linux/" class="dd-item">
         <div>
-          <a href="/step-by-step/configuration/get-target-guest-info/">
-            Get Target Guest Info
+          <a href="/step-by-step/configuration/get-target-guest-info-linux/">
+            Get Target Guest Info (Linux)
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -162,19 +168,22 @@
       <center>Navigation : 
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/quick-start/" >
-   Quick Start</option> 
+    <option value="/quick-start-windows/" >
+   Quick Start with Windows Guest</option> 
+  
+    <option value="/quick-start-linux/" >
+   Quick Start with Linux Guest</option> 
   
     <option value="/step-by-step/"  selected>
    Step by Step</option> 
-      <option value="/step-by-step/install-xen-with-flask/" >- Install Xen With FLASK</option>
+      <option value="/step-by-step/install-xen-with-flask/" >- Install Xen With XSM FLASK Policy</option>
     <option value="/step-by-step/configuration/" >
   - 
    Configure TinyVMI</option> 
       <option value="/step-by-step/configuration/update-xsm-flask-policy/" >-- Update XSM FLASK Policy</option>
       <option value="/step-by-step/configuration/update-stubdom-makefile/" >-- Update Stubdom Makefile</option>
       <option value="/step-by-step/configuration/update-minios-makefile/" >-- Update Mini-OS Makefile</option>
-      <option value="/step-by-step/configuration/get-target-guest-info/" >-- Get Target Guest Info</option>
+      <option value="/step-by-step/configuration/get-target-guest-info-linux/" >-- Get Target Guest Info (Linux)</option>
       <option value="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/" >-- Configure TinyVMI with Target Info</option>
   
       <option value="/step-by-step/run-tinyvmi/" >- Build and Run TinyVMI</option>
@@ -206,7 +215,7 @@
     
     
 
-<p>Here is an overview of all steps we need to build and run TinyVMI:</p>
+<p>Here is an overview of all steps we need to build and run TinyVMI. The following will introduce all the changes to the original Xen-4.10.0 source code in order to run TinyVMI:</p>
 
 <ol>
 <li><p><a href="/step-by-step/install-xen-with-flask/">Install Xen with XSM FLASK Enabled</a>.</p></li>
@@ -219,7 +228,7 @@
 
 <p>c) <a href="/step-by-step/configuration/update-minios-makefile/">Update Mini-OS Makefile</a></p>
 
-<p>d) <a href="/step-by-step/configuration/get-target-guest-info/">Get Target Guest Kernel Info</a></p>
+<p>d) <a href="/step-by-step/configuration/get-target-guest-info-linux/">Get Target Guest Kernel Info (Linux)</a></p>
 
 <p>e) <a href="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/">Configure TinyVMI with Target Guest Info</a></p></li>
 
@@ -232,8 +241,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/quick-start/" title="Quick Start"> <i class="fa fa-chevron-left"></i><label>Quick Start</label></a>
-    <a class="nav nav-next" href="/step-by-step/install-xen-with-flask/" title="Install Xen With FLASK" style="margin-right: 0px;"><label>Install Xen With FLASK</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/quick-start-linux/" title="Quick Start with Linux Guest"> <i class="fa fa-chevron-left"></i><label>Quick Start with Linux Guest</label></a>
+    <a class="nav nav-next" href="/step-by-step/install-xen-with-flask/" title="Install Xen With XSM FLASK Policy" style="margin-right: 0px;"><label>Install Xen With XSM FLASK Policy</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

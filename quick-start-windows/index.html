@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TinyVMI Documentation</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.41-DEV" />
+<title>Quick Start with Windows Guest :: TinyVMI Documentation</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/tinyvmi.github.io\/";
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79101-13', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+  </head>
+  <body data-url="/quick-start-windows/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://tinyvmi.github.io/">TinyVMI Documentation</a>
+  
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/tinyvmi/tinyvmi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://tinyvmi.github.io/gsoc-blog"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>GSoC 2018 Blog</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/" class="dd-item">
+          <a href="/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/quick-start-windows/" class="dd-item parent active alwaysopen
+        ">
+      <div>
+      <a href="/quick-start-windows/">Quick Start with Windows Guest</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/quick-start-linux/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/quick-start-linux/">Quick Start with Linux Guest</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/step-by-step/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/step-by-step/">Step by Step</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/step-by-step/install-xen-with-flask/" class="dd-item">
+        <div>
+          <a href="/step-by-step/install-xen-with-flask/">
+            Install Xen With XSM FLASK Policy
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/step-by-step/configuration/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/step-by-step/configuration/">Configure TinyVMI</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/step-by-step/configuration/update-xsm-flask-policy/" class="dd-item">
+        <div>
+          <a href="/step-by-step/configuration/update-xsm-flask-policy/">
+            Update XSM FLASK Policy
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/step-by-step/configuration/update-stubdom-makefile/" class="dd-item">
+        <div>
+          <a href="/step-by-step/configuration/update-stubdom-makefile/">
+            Update Stubdom Makefile
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/step-by-step/configuration/update-minios-makefile/" class="dd-item">
+        <div>
+          <a href="/step-by-step/configuration/update-minios-makefile/">
+            Update Mini-OS Makefile
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/step-by-step/configuration/get-target-guest-info-linux/" class="dd-item">
+        <div>
+          <a href="/step-by-step/configuration/get-target-guest-info-linux/">
+            Get Target Guest Info (Linux)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/" class="dd-item">
+        <div>
+          <a href="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/">
+            Configure TinyVMI with Target Info
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/step-by-step/run-tinyvmi/" class="dd-item">
+        <div>
+          <a href="/step-by-step/run-tinyvmi/">
+            Build and Run TinyVMI
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+
+<a class="github-button" href="https://github.com/tinyvmi/tinyvmi/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download vjeantet/hugo-theme-docdock on GitHub">Download</a>
+
+
+<a class="github-button" href="https://github.com/tinyvmi/tinyvmi" data-icon="octicon-star" data-show-count="false" aria-label="Star vjeantet/hugo-theme-docdock on GitHub">Star</a>
+
+
+<a class="github-button" href="https://github.com/tinyvmi/tinyvmi/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork vjeantet/hugo-theme-docdock on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/quick-start-windows/"  selected>
+   Quick Start with Windows Guest</option> 
+  
+    <option value="/quick-start-linux/" >
+   Quick Start with Linux Guest</option> 
+  
+    <option value="/step-by-step/" >
+   Step by Step</option> 
+      <option value="/step-by-step/install-xen-with-flask/" >- Install Xen With XSM FLASK Policy</option>
+    <option value="/step-by-step/configuration/" >
+  - 
+   Configure TinyVMI</option> 
+      <option value="/step-by-step/configuration/update-xsm-flask-policy/" >-- Update XSM FLASK Policy</option>
+      <option value="/step-by-step/configuration/update-stubdom-makefile/" >-- Update Stubdom Makefile</option>
+      <option value="/step-by-step/configuration/update-minios-makefile/" >-- Update Mini-OS Makefile</option>
+      <option value="/step-by-step/configuration/get-target-guest-info-linux/" >-- Get Target Guest Info (Linux)</option>
+      <option value="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/" >-- Configure TinyVMI with Target Info</option>
+  
+      <option value="/step-by-step/run-tinyvmi/" >- Build and Run TinyVMI</option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/tinyvmi.github.io\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Quick Start with Windows Guest</h1>
+    
+    
+    
+
+
+
+<div class="panel panel-success">
+	<div class="panel-heading">NOTE</div>
+	<div class="panel-body"><p>This post shows all the comands and configuration files you need to build and run TinyVMI with Windows guest.
+Most of them can be used directly in your terminal (tested under Ubuntu 18.04), while some fields need to be adjusted according to your build environment.
+For example, your working directory <strong>WORKDIR</strong>, logical volume group name <strong>vg0</strong>, iso image file path, etc.</p>
+
+<p>Acknowledgment:
+This post is customized for TinyVMI based on instructions at <a href="https://drakvuf.com/">DRAKVUF</a>.</p>
+</div>
+	
+</div>
+
+
+<h4 id="1-install-xen">1. Install Xen</h4>
+
+<p>Compile and install Xen from given source code of xen-4.10.0, with XSM enabled.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir WOKRDIR
+cd WORKDIR/
+<span style="color:#75715e"># install prerequest for Ubuntu
+</span><span style="color:#75715e"></span>wget https://gist.githubusercontent.com/cnlelema/5f14675364a47c6ffa7e34bb6d3ad470/raw/41cffdbc8d0c689e8d9ba78d886a215125d833d9/install-pre-ubu18-xen4.10.0.sh
+sudo bash install-pre-ubu18-xen4.10.0.sh
+
+<span style="color:#75715e"># download Xen source
+</span><span style="color:#75715e"></span>git clone --recurse-submodules https://github.com/tinyvmi/xen.git
+cd xen
+
+
+<span style="color:#75715e"># configure xen
+</span><span style="color:#75715e"></span>./configure --enable-stubdom --enable-systemd
+
+<span style="color:#75715e"># enable XSM support
+</span><span style="color:#75715e"></span>make -C xen menuconfig
+<span style="color:#75715e"># Mark option 
+</span><span style="color:#75715e">#   &#39;Common Features -&gt; Xen Security Modules support&#39;, and 
+</span><span style="color:#75715e">#   suboption &#39;Compile Xen with a built-in security policy&#39;. 
+</span><span style="color:#75715e"># leave other option as is.
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># compile &amp; install Xen
+</span><span style="color:#75715e"></span>make dist -jN  <span style="color:#75715e">#set N to be number of cores/threads on your machine.
+</span><span style="color:#75715e"></span>sudo make install 
+
+sudo systemctl enable xen-qemu-dom0-disk-backend.service
+sudo systemctl enable xen-init-dom0.service
+sudo systemctl enable xenconsoled.service
+
+sudo ldconfig
+
+<span style="color:#75715e"># enable XSM flask in grub entry options
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># backup 
+</span><span style="color:#75715e"></span>sudo cp /etc/default/grub /etc/default/grub-backup
+
+<span style="color:#75715e"># Add the following line to the file /etc/default/grub:
+</span><span style="color:#75715e">#     GRUB_CMDLINE_XEN_DEFAULT=&#34;dom0_mem=3096M,max:3096M flask=enforcing&#34;
+</span><span style="color:#75715e"># This will be appended to the option of Linux kernel in the grub entry
+</span><span style="color:#75715e"></span>sudo sed -i <span style="color:#e6db74">&#39;/GRUB_CMDLINE_LINUX=/aGRUB_CMDLINE_XEN_DEFAULT=\&#34;dom0_mem=3096M,max:3096M flask=enforcing\&#34;&#39;</span> /etc/default/grub
+
+sudo update-grub
+
+<span style="color:#75715e"># Finally reboot and choose Xen entry upon grub menu
+</span><span style="color:#75715e"></span>sudo reboot</code></pre></div>
+<p>Select Xen to boot upon grub entry. After login, you can verify installation via:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo xl list -Z</code></pre></div>
+<p>The output should looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> 
+Name                                        ID   Mem VCPUs	State	Time<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>   Security Label
+Domain-0                                     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10240</span>     <span style="color:#ae81ff">4</span>     r-----     <span style="color:#ae81ff">800</span>.2 system_u:system_r:dom0_t</code></pre></div>
+<h4 id="install_guest">2. Install Windows VM and get Windows symbols.</h4>
+
+<p>You can either create a <a href="/quick-start-windows/#install_guest">Windows VM</a> or <a href="/quick-start-linux/#install_guest">Linux VM</a> as target VM to intropect from TinyVMI.</p>
+
+<h5 id="windows-vm">Install Windows as guest</h5>
+
+<p>Create logical volumn for Windows VM:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># create logical volumn
+</span><span style="color:#75715e">#   with 
+</span><span style="color:#75715e">#   size 20G, name &#39;lvwin7&#39;, in volumn group &#39;vg0&#39;
+</span><span style="color:#75715e"></span>sudo lvcreate -L20G -n lvwin7 vg0
+<span style="color:#75715e"># verify the lv with its name and size
+</span><span style="color:#75715e"></span>sudo lvdisplay
+<span style="color:#75715e"># outputs should include
+</span><span style="color:#75715e"></span>    --- Logical volume ---
+    LV Path                /dev/vg0/lvwin7
+    LV Name                lvwin7
+    VG Name                vg0
+    LV UUID                tSN9Kk-****-****-****-****-****-afwDhx
+    LV Write Access        read/write
+    LV Creation host, time ruisrv, <span style="color:#ae81ff">2018</span>-06-28 <span style="color:#ae81ff">13</span>:09:38 -0400
+    LV Status              available
+    <span style="color:#75715e"># open                 0
+</span><span style="color:#75715e"></span>    LV Size                <span style="color:#ae81ff">20</span>.00 GiB
+    Current LE             <span style="color:#ae81ff">5120</span>
+    Segments               <span style="color:#ae81ff">1</span>
+    Allocation             inherit
+    Read ahead sectors     auto
+    - currently set to     <span style="color:#ae81ff">256</span>
+    Block device           <span style="color:#ae81ff">252</span>:8</code></pre></div>
+<p>Create a configuration file use the following template:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf"># file windows7.cfg
+# ====
+# HVM guest created from Windows ISO file
+# ====
+
+type = &#34;hvm&#34;
+serial=&#39;pty&#39;
+
+# Guest name
+name = &#34;win7&#34;
+
+
+# Initial memory allocation (MB)
+memory = 4096
+
+# Maximum memory (MB)
+# If this is greater than `memory&#39; then the slack will start ballooned
+# (this assumes guest kernel support for ballooning)
+maxmem = 4096
+
+# Number of VCPUS
+vcpus = 2
+
+# Network devices
+vif = [ &#39;type=ioemu, bridge=netbr0&#39; ]
+
+# Disk Devices
+# change to your lv path and iso file.
+disk = [ &#39;/dev/vg0/lvwin7,raw,xvda,w&#39;,&#39;/media/iso/en_windows_7_AIO_sp1_x64_x86_dvd.ISO,,hdc,cdrom&#39; ]
+
+# Guest VGA console configuration, either SDL or VNC
+#sdl = 1
+vnc = 1
+
+vncconsole=1
+
+boot = &#34;dc&#34;
+# uncomment this after installation, to avoid boot to iso
+#boot = &#34;cd&#34;
+
+# fix mouse cursor
+usbdevice=&#39;tablet&#39;
+
+# XSM label
+seclabel=&#39;system_u:system_r:domU_t&#39;</code></pre></div>
+<p>Start VM to install Windows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">xl create windows7.cfg</code></pre></div>
+<p>If no iso file for Windows, VM image could be downloaded <a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/">here</a>. You will need to convert the Windows VM image from Virtualbox (VMWare) format to Xen Image.</p>
+
+<p>Next, we need to get Windows symbols by getting Rekall profile from Dom0:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd WORKDIR/
+git clone https://github.com/libvmi/libvmi
+cd libvmi
+./autogen.sh
+./configure --disable-kvm</code></pre></div>
+<p>Make sure the output is like the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Feature         | Option
+----------------|---------------------------
+Xen Support     | --enable-xen<span style="color:#f92672">=</span>yes
+KVM Support     | --enable-kvm<span style="color:#f92672">=</span>no
+File Support    | --enable-file<span style="color:#f92672">=</span>yes
+Shm-snapshot    | --enable-shm-snapshot<span style="color:#f92672">=</span>no
+Rekall profiles | --enable-rekall-profiles<span style="color:#f92672">=</span>yes
+----------------|---------------------------
+
+OS              | Option
+----------------|---------------------------
+Windows         | --enable-windows<span style="color:#f92672">=</span>yes
+Linux           | --enable-linux<span style="color:#f92672">=</span>yes
+
+
+Tools           | Option                    | Reason
+----------------|---------------------------|----------------------------
+Examples        | --enable-examples<span style="color:#f92672">=</span>yes
+VMIFS           | --enable-vmifs<span style="color:#f92672">=</span>yes        | yes</code></pre></div>
+<p>Build LibVMI:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make</code></pre></div>
+<p>Now create Rekall profile for Windows 7 guest VM:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># check VM is running
+</span><span style="color:#75715e"></span>$ sudo xl list
+Name                                        ID   Mem VCPUs	StateTime<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+Domain-0                                     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10239</span>     <span style="color:#ae81ff">4</span>     r-----    <span style="color:#ae81ff">2479</span>.8
+win7                                         <span style="color:#ae81ff">6</span>  <span style="color:#ae81ff">4096</span>     <span style="color:#ae81ff">2</span>     -b----      <span style="color:#ae81ff">84</span>.1
+$ cd WORKDIR/libvmi/examples/
+$ sudo ./vmi-win-guid name win7
+Windows Kernel found @ 0xc04d000
+	Version: <span style="color:#ae81ff">64</span>-bit Windows <span style="color:#ae81ff">7</span>
+	PE GUID: 4ce7951a5ea000
+	PDB GUID: 3844dbb920174967be7aa4a2c20430fa2
+	Kernel filename: ntkrnlmp.pdb
+	Multi-processor without PAE
+	Signature: <span style="color:#ae81ff">17744</span>.
+	Machine: <span style="color:#ae81ff">34404</span>.
+	<span style="color:#75715e"># of sections: 24.
+</span><span style="color:#75715e"></span>	<span style="color:#75715e"># of symbols: 0.
+</span><span style="color:#75715e"></span>	Timestamp: <span style="color:#ae81ff">1290245402</span>.
+	Characteristics: <span style="color:#ae81ff">34</span>.
+	Optional header size: <span style="color:#ae81ff">240</span>.
+	Optional header type: 0x20b
+	Section <span style="color:#ae81ff">1</span>: .text
+	Section <span style="color:#ae81ff">2</span>: INITKDBG
+	Section <span style="color:#ae81ff">3</span>: POOLMI
+	Section <span style="color:#ae81ff">4</span>: POOLCODE
+	Section <span style="color:#ae81ff">5</span>: RWEXEC
+	Section <span style="color:#ae81ff">6</span>: .rdata
+	Section <span style="color:#ae81ff">7</span>: .data
+	Section <span style="color:#ae81ff">8</span>: .pdata
+	Section <span style="color:#ae81ff">9</span>: ALMOSTRO
+	Section <span style="color:#ae81ff">10</span>: SPINLOCK
+	Section <span style="color:#ae81ff">11</span>: PAGELK
+	Section <span style="color:#ae81ff">12</span>: PAGE
+	Section <span style="color:#ae81ff">13</span>: PAGEKD
+	Section <span style="color:#ae81ff">14</span>: PAGEVRFY
+	Section <span style="color:#ae81ff">15</span>: PAGEHDLS
+	Section <span style="color:#ae81ff">16</span>: PAGEBGFX
+	Section <span style="color:#ae81ff">17</span>: PAGEVRFB
+	Section <span style="color:#ae81ff">18</span>: .edata
+	Section <span style="color:#ae81ff">19</span>: PAGEDATA
+	Section <span style="color:#ae81ff">20</span>: PAGEVRFC
+	Section <span style="color:#ae81ff">21</span>: PAGEVRFD
+	Section <span style="color:#ae81ff">22</span>: INIT
+	Section <span style="color:#ae81ff">23</span>: .rsrc
+	Section <span style="color:#ae81ff">24</span>: .reloc</code></pre></div>
+<p>Important fields are:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PDB GUID: 3844dbb920174967be7aa4a2c20430fa2
+Kernel filename: ntkrnlmp.pdb</code></pre></div>
+<p>If vmi-win-guid fails to find the Windows kernel in memory, you can use Rekall to examine ntoskrnl.exe on the disk:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo su
+kpartx -a /dev/vg0/lvwin7
+mount -o ro /dev/vg0/lvwin7 /mnt
+rekal peinfo -f /mnt/Windows/System32/ntoskrnl.exe &gt; WORKDIR/peinfo.txt
+umount /mnt
+kpartx -d /dev/vg0/lvwin7</code></pre></div>
+<p>The generated WORKDIR/peinfo.txt file will contain the required PDB filename and GUID.</p>
+
+<p>Given PDB file name and GUID, we can generate the Rekall profile:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># create a target configuration directory in TinyVMI source tree. 
+</span><span style="color:#75715e"></span>mkdir WORKDIR/xen/stubdom/tinyvmi/tiny-vmi/config/target_conf_examples/example_target_windows7_sp1_x64_new
+cd WORKDIR/xen/stubdom/tinyvmi/tiny-vmi/config/target_conf_examples/example_target_windows7_sp1_x64_new/
+
+rekall fetch_pdb ntkrpamp 3844dbb920174967be7aa4a2c20430fa2
+rekall parse_pdb ntkrpamp &gt; windows7-sp1.rekall.json
+
+xxd -i windows7-sp1.rekall.json &gt; target_libvmi_sym.c</code></pre></div>
+<p>Create a C header file named &ldquo;target_libvmi_sym.h&rdquo; with the following content:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef TARGET_LIBVMI_SYM_H
+</span><span style="color:#75715e">#define TARGET_LIBVMI_SYM_H
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#ifndef REKALL_FILE_FROM_STRING
+</span><span style="color:#75715e">#define REKALL_FILE_FROM_STRING
+</span><span style="color:#75715e">#endif  </span><span style="color:#75715e">//REKALL_FILE_FROM_STRING
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#define guest_rekall_string windows7_sp1_rekall_json
+</span><span style="color:#75715e">#define guest_rekall_string_len windows7_sp1_rekall_json_len
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> windows7_sp1_rekall_json[];
+<span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> windows7_sp1_rekall_json_len;
+
+<span style="color:#75715e">#define guest_rekall_string_SRC_FILE &#34;/tiny-vmi/config/target_libvmi_s
+</span><span style="color:#75715e"></span>ym.c<span style="color:#e6db74">&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#e6db74">#endif // TARGET_LIBVMI_COMMON_H</span></code></pre></div>
+<p>Under the same directory, create configuration file named libvmi.conf for Windows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf">win7 { 
+    ostype = &#34;Windows&#34;; 
+    rekall_profile = &#34;string&#34;; 
+}</code></pre></div>
+<p>And convert it into C string:</p>
+
+<pre><code>xxd -i libvmi.conf &gt; target_libvmi_conf_file.c
+</code></pre>
+
+<p>Then create symblic link in TinyVMI source:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># go to dir WORKDIR/xen/stubdom/tinyvmi/tiny-vmi/config/target_conf 
+</span><span style="color:#75715e"># and remove old links
+</span><span style="color:#75715e"></span>cd ../../target_conf
+rm *
+<span style="color:#75715e"># create symbolic 
+</span><span style="color:#75715e"></span>ln -s ../target_conf_examples/example_target_windows7_sp1_x64_new/* .</code></pre></div>
+<p>Update <code>DOMAIN_NAME</code> in file <code>xen/stubdom/tinyvmi/include/domain_id.h</code>. For example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef DOMAIN_ID_H
+</span><span style="color:#75715e">#define DOMAIN_ID_H
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#define DOMAIN_NAME &#34;win7&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#endif // DOMAIN_ID_H</span></code></pre></div>
+<p>Then compile and run TinyVMI</p>
+
+<p>Adjust the Xen configuration file use the template at <code>WORKDIR/xen/stubdom/tinyvmi/domain_config</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf"># file xen-src/stubdom/tinyvmi/domain_config
+# Change fileds accordingly
+
+# Kernel image file.
+kernel = &#34;mini-os.gz&#34;
+
+# Initial memory allocation (in megabytes) for the new domain.
+memory = 64
+
+# A name for your domain. All domains must have different names.
+name = &#34;TinyVMI&#34;
+
+# network connection
+vif = [&#39;ip=10.0.0.100,bridge=netbr0&#39; ]
+
+on_crash = &#39;destroy&#39;
+
+seclabel=&#39;system_u:system_r:domU_t&#39;</code></pre></div>
+<p>You might need to adjust the network configuration accordingly, i.e. giving a valid IP address and network bridge name on your domain 0.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd WORKDIR/xen/stubdom/tinyvmi
+sudo bash run.tiny.sh buildrun</code></pre></div>
+<p>Then you&rsquo;ll get outputs like:</p>
+
+<pre><code>Xen Minimal OS!
+    start_info: 0xf6000(VA)
+    nr_pages: 0x2000
+    shared_inf: 0xa0278000(MA)
+        pt_base: 0xf9000(VA)
+
+....
+
+[main] IP 0 netmask 0 gateway 0.
+[main] TCP/IP bringup begins.
+Thread &quot;tcpip_thread&quot;: pointer: 0x0x200000002170, stack: 0x0x2f0000
+[tcpip_thread] TCP/IP bringup ends.
+[main] Network is ready.
+&quot;main&quot; 
+VMI_TEST: Hello, world!
+VMI_TEST: main: TimeStamp: 1531894244 s 473686 us
+VMI_TEST: main: TimeStamp: 1531894246 s 483747 us
+evtchn_open() -&gt; 4
+xenevtchn_bind_interdomain(1, 6) = 0
+VMI_TEST: LibVMI init succeeded!
+VMI_TEST: Waiting for events...
+</code></pre>
+
+<p>Create a file with the following C code in Windows 7:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// int3.c in windows guest
+</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;windows.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loopasm</span>(){
+    __asm__(<span style="color:#e6db74">&#34;int $3&#34;</span>);
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+    printf(<span style="color:#e6db74">&#34;INT 3 in ASM</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; i<span style="color:#f92672">++</span>){
+        Sleep(<span style="color:#ae81ff">2000</span>);
+        loopasm();
+        printf(<span style="color:#e6db74">&#34;INT 3 LOOP %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, i);
+    }
+    printf(<span style="color:#e6db74">&#34;loop done</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}</code></pre></div>
+<p>Compile and run it in Windows guest using CodeBlock (or other alternatives).</p>
+
+<p><img src="/screenshot/win7_int3.png?height=600&amp;classes=border,shadow" alt="win7_int3" /></p>
+
+<p>Then on the output of TinyVMI, should like:</p>
+
+<p><img src="/screenshot/win7_int3_tinyvmi.png?height=661&amp;classes=border,shadow" alt="win7_int3_tinyvmi" /></p>
+
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/" title="TinyVMI Documentation"> <i class="fa fa-chevron-left"></i><label>TinyVMI Documentation</label></a>
+    <a class="nav nav-next" href="/quick-start-linux/" title="Quick Start with Linux Guest" style="margin-right: 0px;"><label>Quick Start with Linux Guest</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+  
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 07/17/2018
+    </div>
+    
+
+    <div class="github-link">
+      <a href="https://github.com/tinyvmi/tinyvmi-docs-hugo/edit/master/content/quick-start-windows/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

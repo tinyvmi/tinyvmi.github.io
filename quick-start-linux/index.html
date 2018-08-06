@@ -416,7 +416,13 @@ xxd -i System.map-4.4.0-101-generic &gt; target_libvmi_sym.c</code></pre></div>
 </span><span style="color:#75715e">* to ASCII string codes: xxd -i System_map_*
 </span><span style="color:#75715e">*/</span>
 
-<span style="color:#75715e">#define TARGET_SYSMAP
+<span style="color:#75715e">#ifndef SYM_FILE_FROM_STRING
+</span><span style="color:#75715e">#define SYM_FILE_FROM_STRING
+</span><span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#ifdef REKALL_FILE_FROM_STRING
+</span><span style="color:#75715e">#undef REKALL_FILE_FROM_STRING
+</span><span style="color:#75715e">#endif
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">#define linux_system_map_string System_map_4_4_0_101_generic
 </span><span style="color:#75715e">#define linux_system_map_string_len System_map_4_4_0_101_generic_len

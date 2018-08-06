@@ -463,10 +463,16 @@ xxd -i windows7-sp1.rekall.json &gt; target_libvmi_sym.c</code></pre></div>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef TARGET_LIBVMI_SYM_H
 </span><span style="color:#75715e">#define TARGET_LIBVMI_SYM_H
 </span><span style="color:#75715e"></span>
+
+<span style="color:#75715e">#ifdef SYM_FILE_FROM_STRING
+</span><span style="color:#75715e">#undef SYM_FILE_FROM_STRING
+</span><span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>
 <span style="color:#75715e">#ifndef REKALL_FILE_FROM_STRING
 </span><span style="color:#75715e">#define REKALL_FILE_FROM_STRING
 </span><span style="color:#75715e">#endif  </span><span style="color:#75715e">//REKALL_FILE_FROM_STRING
 </span><span style="color:#75715e"></span>
+
 <span style="color:#75715e">#define guest_rekall_string windows7_sp1_rekall_json
 </span><span style="color:#75715e">#define guest_rekall_string_len windows7_sp1_rekall_json_len
 </span><span style="color:#75715e"></span>

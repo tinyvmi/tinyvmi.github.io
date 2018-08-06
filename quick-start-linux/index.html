@@ -534,6 +534,37 @@ VMI_TEST: LibVMI init succeeded!
 VMI_TEST: Waiting for events...
 </code></pre>
 
+<p>Create a file with the following C code in Linux guest VM:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// int3.c in Linux guest
+</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loopasm</span>(){
+    __asm__(<span style="color:#e6db74">&#34;int $3&#34;</span>);
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+    printf(<span style="color:#e6db74">&#34;INT 3 in ASM</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; i<span style="color:#f92672">++</span>){
+        Sleep(<span style="color:#ae81ff">2</span>);
+        loopasm();
+        printf(<span style="color:#e6db74">&#34;INT 3 LOOP %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, i);
+    }
+    printf(<span style="color:#e6db74">&#34;loop done</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}</code></pre></div>
+<p>Compile and run it:</p>
+
+<pre><code>gcc int3.c -o int3
+./int3
+</code></pre>
+
+<p><img src="/screenshot/ubu16_int3.png?height=327&amp;classes=border,shadow" alt="ubu16_int3" /></p>
+
+<p>Then on the output of TinyVMI, should like:</p>
+
+<p><img src="/screenshot/ubu16_int3_tinyvmi.png?height=657&amp;classes=border,shadow" alt="ubu16_int3_tinyvmi" /></p>
+
 
 
     

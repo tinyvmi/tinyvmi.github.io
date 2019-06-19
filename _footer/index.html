@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.4" />
-<title>Update Mini-OS Makefile :: TinyVMI Documentation</title>
+<title> :: TinyVMI Documentation</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -30,7 +30,7 @@
 
     
   </head>
-  <body data-url="/step-by-step/configuration/update-minios-makefile/">
+  <body data-url="/_footer/">
     
       <header>
   <div class="logo">
@@ -75,7 +75,7 @@
       <a href="/quick-start-linux/">Quick Start with Linux Guest</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/step-by-step/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/step-by-step/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/step-by-step/">Step by Step</a>
@@ -89,7 +89,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/step-by-step/configuration/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/step-by-step/configuration/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/step-by-step/configuration/">Configure TinyVMI</a>
@@ -110,7 +110,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/step-by-step/configuration/update-minios-makefile/" class="dd-item active">
+      <li data-nav-id="/step-by-step/configuration/update-minios-makefile/" class="dd-item">
         <div>
           <a href="/step-by-step/configuration/update-minios-makefile/">
             Update Mini-OS Makefile
@@ -182,7 +182,7 @@
    Configure TinyVMI</option> 
       <option value="/step-by-step/configuration/update-xsm-flask-policy/" >-- Update XSM FLASK Policy</option>
       <option value="/step-by-step/configuration/update-stubdom-makefile/" >-- Update Stubdom Makefile</option>
-      <option value="/step-by-step/configuration/update-minios-makefile/"  selected>-- Update Mini-OS Makefile</option>
+      <option value="/step-by-step/configuration/update-minios-makefile/" >-- Update Mini-OS Makefile</option>
       <option value="/step-by-step/configuration/get-target-guest-info-linux/" >-- Get Target Guest Info (Linux)</option>
       <option value="/step-by-step/configuration/configure-tinyvmi-with-target-guest-info/" >-- Configure TinyVMI with Target Info</option>
   
@@ -210,35 +210,17 @@
       </div>
     
 
-    <h1>Update Mini-OS Makefile</h1>
+    <h1></h1>
     
     
     
-    <p>Mini-OS is compiled with a minimal number of libraries essentially for its limited kernel functions. TinyVMI requires more libraries, including <strong><a href="https://github.com/json-c/json-c">json-c</a></strong>, <strong><a href="http://www.digip.org/jansson/">jansson</a></strong>.</p>
-
-<p>All libraries in Mini-OS need to be statically compiled and linked into the tiny kernel. Under Xen development environment, we could statically compile the library in stubdom&rsquo;s makefile as shown in <a href="/step-by-step/configuration/update-stubdom-makefile/">the previous step</a>. To link the library, the following changes need to be made in the Makefile of Mini-OS source code:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-patch" data-lang="patch"><span style="color:#f92672">--- extras/mini-os/Makefile.old	2017-10-20 06:50:35.000000000 -0400
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ extras/mini-os/Makefile	2018-07-02 19:48:24.655456301 -0400
-</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -142,6 +142,9 @@
-</span><span style="color:#75715e"></span> LIBS += $(XEN_ROOT)/stubdom/libxc-$(MINIOS_TARGET_ARCH)/libxenctrl.a
- LIBS += $(XEN_ROOT)/stubdom/libxc-$(MINIOS_TARGET_ARCH)/libxenguest.a
- endif
-<span style="color:#a6e22e">+# APP_LDLIBS += -liconv
-</span><span style="color:#a6e22e">+APP_LDLIBS += -ljansson
-</span><span style="color:#a6e22e">+APP_LDLIBS += -ljson-c
-</span><span style="color:#a6e22e"></span> APP_LDLIBS += -lpci
- APP_LDLIBS += -lz
- APP_LDLIBS += -lm
-</code></pre></div>
-
+    
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/step-by-step/configuration/update-stubdom-makefile/" title="Update Stubdom Makefile"> <i class="fa fa-chevron-left"></i><label>Update Stubdom Makefile</label></a>
-    <a class="nav nav-next" href="/step-by-step/configuration/get-target-guest-info-linux/" title="Get Target Guest Info (Linux)" style="margin-right: 0px;"><label>Get Target Guest Info (Linux)</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-next" href="/quick-start-windows/" title="Quick Start with Windows Guest" style="margin-right: 0px;"><label>Quick Start with Windows Guest</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -252,13 +234,9 @@
     
 
   
-    <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 07/17/2018
-    </div>
-    
 
     <div class="github-link">
-      <a href="https://github.com/tinyvmi/tinyvmi-docs-hugo/edit/master/content/step-by-step/configuration/update-minios-makefile.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/tinyvmi/tinyvmi-docs-hugo/edit/master/content/_footer.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
   </div>

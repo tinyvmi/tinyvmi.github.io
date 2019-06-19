@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.41-DEV" />
+<meta name="generator" content="Hugo 0.55.4" />
 <title>Build and Run TinyVMI :: TinyVMI Documentation</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -217,23 +217,37 @@
     
 
 <div class="panel panel-success">
-	<div class="panel-heading">Tips</div>
-	<div class="panel-body"><p>You can directly run a handy bash script in tinyvmi/ directory:</p>
+    <div class="panel-heading">Tips</div>
+    <div class="panel-body">
+You can directly run a handy bash script in tinyvmi/ directory:
 
-<p>To build and run TinyVMI altogether in a single command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd xen-src/stubdom/tinyvmi
-sudo bash run.tiny.sh build </code></pre></div>
-<p>Or to only make TinyVMI without creating VM:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd xen-src/stubdom/tinyvmi
-sudo bash run.tiny.sh make</code></pre></div>
-<p>Or to only run TinyVMI without rebuild:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd xen-src/stubdom/tinyvmi
-sudo bash run.tiny.sh</code></pre></div>
-<p>For more details, see the following steps.</p>
-</div>
-	
-</div>
+To build and run TinyVMI altogether in a single command:
 
+```bash
+cd xen-src/stubdom/tinyvmi
+sudo bash run.tiny.sh build 
+```
+
+Or to only make TinyVMI without creating VM:
+
+```bash
+cd xen-src/stubdom/tinyvmi
+sudo bash run.tiny.sh make
+```
+
+Or to only run TinyVMI without rebuild:
+
+```bash
+cd xen-src/stubdom/tinyvmi
+sudo bash run.tiny.sh
+```
+
+For more details, see the following steps.
+
+</div>
+    
+
+<p></div></p>
 
 <h4 id="build-tinyvmi">Build TinyVMI</h4>
 
@@ -246,14 +260,14 @@ sudo bash run.tiny.sh</code></pre></div>
 <p>Command <code>xenstore-chmod</code> can be used to change xenstore permissions. ( <code>xenstore-ls -p</code> to see the current permissions)</p>
 
 <p><a href="https://xenbits.xen.org/docs/4.6-testing/man/xenstore-chmod.1.html">Permission of a Xenstore directory/key</a> is defined by format of <code>LD</code>, where <code>L</code> is a letter for the type of permission and <code>D</code> is the corresponding domain ID. In order to get the domain ID of TinyVMI, you can first create the VM and pause it immediately (within 2 seconds as the <a href="https://github.com/tinyvmi/tinyvmi/blob/master/main.c">main function</a> will wait for 2 seconds before start executing its actual workload codes), then get the ID via <code>xl list</code> or <code>xl domid TinyVMI</code>. For example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># start VM and pause immediately
-</span><span style="color:#75715e"></span>cd ./stubdom/minios-x86_64-tinyvmi
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># start VM and pause immediately</span>
+cd ./stubdom/minios-x86_64-tinyvmi
 xl create ../tinyvmi/domain_config &amp; <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>xl pause TinyVMI <span style="color:#f92672">&amp;&amp;</span>
 echo <span style="color:#e6db74">&#34;Domain ID of TinyVMI: </span><span style="color:#66d9ef">$(</span>xl domid <span style="color:#e6db74">&#39;TinyVMI&#39;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span></code></pre></div>
 <p>Then, you could run</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># change permission of the directory &#39;/local/domain&#39; recursively
-</span><span style="color:#75715e"></span>$ xenstore-chmod -r <span style="color:#e6db74">&#39;/local/domain&#39;</span> rN</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># change permission of the directory &#39;/local/domain&#39; recursively</span>
+$ xenstore-chmod -r <span style="color:#e6db74">&#39;/local/domain&#39;</span> rN</code></pre></div>
 <p>This will allow TinyVMI to read the entire directory &lsquo;/local/domain&rsquo; in Xenstore.</p>
 
 <h4 id="run-tinyvmi">Run TinyVMI</h4>

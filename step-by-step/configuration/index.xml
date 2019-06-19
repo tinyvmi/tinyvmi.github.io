@@ -17,9 +17,7 @@
       <pubDate>Mon, 04 Jun 2018 22:21:07 -0400</pubDate>
       
       <guid>https://tinyvmi.github.io/step-by-step/configuration/update-xsm-flask-policy/</guid>
-      <description>NOTE  Before this step, it is required to install Xen with FLASK enabled and to have a guest VM to be monitored by TinyVMI. To do so, see instructions here.
- The following assumes the XSM FLASK policy is booted from file /boot/flask/xenpolicy. However, the file name can be changed to other ones as shown here. Or can be dynamically loaded after booting via xl loadpolicy &amp;lt;xenpolicy_file&amp;gt;.
-    1.</description>
+      <description>NOTE - Before this step, it is required to install Xen with FLASK enabled and to have a guest VM to be monitored by TinyVMI. To do so, see instructions [here](https://tinyvmi.github.io/step-by-step/install-xen-with-flask/). - The following assumes the XSM FLASK policy is booted from file ``/boot/flask/xenpolicy``. However, the file name can be changed to other ones as shown [here](https://tinyvmi.github.io/step-by-step/install-xen-with-flask/#update-grub-linux-xen). Or can be dynamically loaded after booting via ``xl loadpolicy ``.</description>
     </item>
     
     <item>

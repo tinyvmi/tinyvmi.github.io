@@ -6,7 +6,7 @@
     <description>Recent content in Step by Step on TinyVMI Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jun 2018 14:43:03 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jun 2018 14:22:24 -0400</lastBuildDate>
     
 	<atom:link href="https://tinyvmi.github.io/step-by-step/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,7 +18,10 @@
       
       <guid>https://tinyvmi.github.io/step-by-step/install-xen-with-flask/</guid>
       <description>Overview The following steps are tested with Xen 4.10.0, other Xen versions with 4.8 and onward should also be fine. The tested host OSes include Ubuntu 16.04, and 18.04. Other Linux based system should be OK as long as they are compatitable with Xen hypervisor.
-Steps + [1. Install Prerequest Packages of Xen](#prerequest) + [2. Install Xen](#install-xen) + [3. Install XSM Policy](#install-xsm) + [4. Update GRUB Scripts with Xen XSM ](#update-grub) + [5.</description>
+Steps  1. Install Prerequest Packages of Xen
+ 2. Install Xen
+ 3. Install XSM Policy
+ 4. Update GRUB Scripts with Xen XSM</description>
     </item>
     
     <item>
@@ -27,7 +30,12 @@ Steps + [1. Install Prerequest Packages of Xen](#prerequest) + [2. Install Xen](
       <pubDate>Mon, 04 Jun 2018 14:43:03 -0400</pubDate>
       
       <guid>https://tinyvmi.github.io/step-by-step/run-tinyvmi/</guid>
-      <description>Tips You can directly run a handy bash script in tinyvmi/ directory: To build and run TinyVMI altogether in a single command: ```bash cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh build ``` Or to only make TinyVMI without creating VM: ```bash cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh make ``` Or to only run TinyVMI without rebuild: ```bash cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh ``` For more details, see the following steps.</description>
+      <description>Tips You can directly run a handy bash script in tinyvmi/ directory:
+To build and run TinyVMI altogether in a single command:
+cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh build  Or to only make TinyVMI without creating VM:
+cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh make Or to only run TinyVMI without rebuild:
+cd xen-src/stubdom/tinyvmi sudo bash run.tiny.sh For more details, see the following steps.
+  Build TinyVMI # cd ./stubdom/ # make tinyvmi-stubdom  Grant Xenstore Permission to LibVMI Command xenstore-chmod can be used to change xenstore permissions.</description>
     </item>
     
   </channel>

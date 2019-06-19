@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.55.4" />
+<meta name="generator" content="Hugo 0.41" />
 <title>Install Xen With XSM FLASK Policy :: TinyVMI Documentation</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -221,26 +221,26 @@
 <p>The following steps are tested with Xen 4.10.0, other Xen versions with 4.8 and onward should also be fine. The tested host OSes include Ubuntu 16.04, and 18.04. Other Linux based system should be OK as long as they are compatitable with Xen hypervisor.</p>
 
 <div class="panel panel-success">
-    <div class="panel-heading">Steps</div>
-    <div class="panel-body">
-+ [1. Install Prerequest Packages of Xen](#prerequest)
+	<div class="panel-heading">Steps</div>
+	<div class="panel-body"><ul>
+<li><p><a href="#prerequest">1. Install Prerequest Packages of Xen</a></p></li>
 
-+ [2. Install Xen](#install-xen)
+<li><p><a href="#install-xen">2. Install Xen</a></p></li>
 
-+ [3. Install XSM Policy](#install-xsm)
+<li><p><a href="#install-xsm">3. Install XSM Policy</a></p></li>
 
-+ [4. Update GRUB Scripts with Xen XSM ](#update-grub)
+<li><p><a href="#update-grub">4. Update GRUB Scripts with Xen XSM </a></p></li>
 
-+ [5. Setup Xen Guest Network with WiFi or Ethernet](#xen-network)
+<li><p><a href="#xen-network">5. Setup Xen Guest Network with WiFi or Ethernet</a></p></li>
 
-+ [6. Install Xen Guest](#xen-guest)
+<li><p><a href="#xen-guest">6. Install Xen Guest</a></p></li>
 
-+ [7. Usefull Links](#links)
-
+<li><p><a href="#links">7. Usefull Links</a></p></li>
+</ul>
 </div>
-    
+	
+</div>
 
-<p></div></p>
 
 <h4 id="prerequest">1. Install Prerequest Packages of Xen</h4>
 
@@ -327,17 +327,14 @@ sudo ln -s xenpolicy-4.10.0 xenpolicy
 <h4 id="update-grub">4. Update Grub Scripts with Xen XSM</h4>
 
 <div class="panel panel-primary">
-    
-    <div class="panel-body">
+	
+	<div class="panel-body"><p>WARNING 1: The following steps are only tested on Ubuntu systems. Other Linux distributions should not follow these commands unless you know what you are doing.</p>
 
-WARNING 1: The following steps are only tested on Ubuntu systems. Other Linux distributions should not follow these commands unless you know what you are doing.
-
-WARNING 2: The following commands are changing your system booting parameters. Mistake operations can make your system unbootable. If you are not sure what you are doing, please first backup the files before change them. 
-
+<p>WARNING 2: The following commands are changing your system booting parameters. Mistake operations can make your system unbootable. If you are not sure what you are doing, please first backup the files before change them.</p>
 </div>
-    
+	
+</div>
 
-<p></div></p>
 
 <h5 id="4-1-update-etc-default-grub">4.1 update /etc/default/grub</h5>
 

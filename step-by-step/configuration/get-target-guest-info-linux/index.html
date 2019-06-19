@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.55.4" />
+<meta name="generator" content="Hugo 0.41" />
 <title>Get Target Guest Info (Linux) :: TinyVMI Documentation</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -246,13 +246,12 @@ seclabel='system_u:system_r:domU_t'
 <h4 id="guest-offset">Get Guest Kernel Offsets</h4>
 
 <div class="panel panel-success">
-    <div class="panel-heading">NOTE</div>
-    <div class="panel-body">
-This method is totally derived from [how LibVMI get info from guest kernel](https://github.com/libvmi/libvmi/tree/master/tools/linux-offset-finder).
+	<div class="panel-heading">NOTE</div>
+	<div class="panel-body"><p>This method is totally derived from <a href="https://github.com/libvmi/libvmi/tree/master/tools/linux-offset-finder">how LibVMI get info from guest kernel</a>.</p>
 </div>
-    
+	
+</div>
 
-<p></div></p>
 
 <p>Download the <a href="https://github.com/libvmi/libvmi/tree/master/tools/linux-offset-finder">linux-offset-finder</a> from LibVMI repo. Then you can use this program to get the offset values needed for
 the ~/etc/libvmi.conf file.  To use, follow the steps below.</p>
@@ -272,19 +271,20 @@ the ~/etc/libvmi.conf file.  To use, follow the steps below.</p>
 <p>Copy the system map file to dom0. For example, on a guest VM running with Ubuntu 16.04, you can find system map file at /boot/Sysmap.map-&lt;kernel_version&gt;, then copy it in ~/etc/Sysmap.map-&lt;kernel_version&gt;.  The current kernel_verion can be got by run <code>uname -r</code>.</p>
 
 <div class="panel panel-success">
-    <div class="panel-heading">Summary</div>
-    <div class="panel-body">
-Now we have the following info from the target guest VM:
+	<div class="panel-heading">Summary</div>
+	<div class="panel-body"><p>Now we have the following info from the target guest VM:</p>
 
-1. target VM name and ID.
-2. ~/etc/libvmi.conf. Acquired by ``linux-offset-finder`` in target VM.
-3. ~/etc/System.map-\<kernel_version>. Copied from /boot/System.map-* on target VM.
+<ol>
+<li>target VM name and ID.</li>
+<li>~/etc/libvmi.conf. Acquired by <code>linux-offset-finder</code> in target VM.</li>
+<li>~/etc/System.map-&lt;kernel_version&gt;. Copied from /boot/System.map-* on target VM.</li>
+</ol>
 
-Next, we will use those info to configure TinyVMI.
+<p>Next, we will use those info to configure TinyVMI.</p>
 </div>
-    
+	
+</div>
 
-<p></div></p>
 
 
     

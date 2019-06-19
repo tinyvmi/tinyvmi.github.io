@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.55.4" />
+<meta name="generator" content="Hugo 0.41" />
 <title>Quick Start with Windows Guest :: TinyVMI Documentation</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -218,46 +218,45 @@
 
 
 <div class="panel panel-success">
-    <div class="panel-heading">NOTE</div>
-    <div class="panel-body">
-This post shows all the comands and configuration files you need to build and run TinyVMI with Windows guest. 
-Most of them can be used directly in your terminal on host machine (tested with Ubuntu 16.04, 18.04 as Dom0), while some fields need to be adjusted according to your build environment. 
-For example, your working directory **WORKDIR**, logical volume group name **vg0**, iso image file path, etc.
+	<div class="panel-heading">NOTE</div>
+	<div class="panel-body"><p>This post shows all the comands and configuration files you need to build and run TinyVMI with Windows guest.
+Most of them can be used directly in your terminal on host machine (tested with Ubuntu 16.04, 18.04 as Dom0), while some fields need to be adjusted according to your build environment.
+For example, your working directory <strong>WORKDIR</strong>, logical volume group name <strong>vg0</strong>, iso image file path, etc.</p>
 
-Acknowledgment:
-This post is customized for TinyVMI based on instructions at [DRAKVUF](https://drakvuf.com/).
+<p>Acknowledgment:
+This post is customized for TinyVMI based on instructions at <a href="https://drakvuf.com/">DRAKVUF</a>.</p>
 </div>
-    
+	
+</div>
 
-<p></div></p>
 
 <h4 id="1-install-xen">1. Install Xen</h4>
 
 <p>Compile and install Xen from given source code of xen-4.10.0, with XSM enabled.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir WOKRDIR
 cd WORKDIR/
-<span style="color:#75715e"># install prerequest for Ubuntu</span>
-wget https://gist.githubusercontent.com/cnlelema/5f14675364a47c6ffa7e34bb6d3ad470/raw/41cffdbc8d0c689e8d9ba78d886a215125d833d9/install-pre-ubu18-xen4.10.0.sh
+<span style="color:#75715e"># install prerequest for Ubuntu
+</span><span style="color:#75715e"></span>wget https://gist.githubusercontent.com/cnlelema/5f14675364a47c6ffa7e34bb6d3ad470/raw/41cffdbc8d0c689e8d9ba78d886a215125d833d9/install-pre-ubu18-xen4.10.0.sh
 sudo bash install-pre-ubu18-xen4.10.0.sh
 
-<span style="color:#75715e"># download Xen source</span>
-git clone --recurse-submodules https://github.com/tinyvmi/xen.git
+<span style="color:#75715e"># download Xen source
+</span><span style="color:#75715e"></span>git clone --recurse-submodules https://github.com/tinyvmi/xen.git
 cd xen
 
 
-<span style="color:#75715e"># configure xen</span>
-./configure --enable-stubdom --enable-systemd
+<span style="color:#75715e"># configure xen
+</span><span style="color:#75715e"></span>./configure --enable-stubdom --enable-systemd
 
-<span style="color:#75715e"># enable XSM support</span>
-make -C xen menuconfig
-<span style="color:#75715e"># Mark option</span> 
-<span style="color:#75715e">#   &#39;Common Features -&gt; Xen Security Modules support&#39;, and</span> 
-<span style="color:#75715e">#   suboption &#39;Compile Xen with a built-in security policy&#39;.</span> 
-<span style="color:#75715e"># leave other option as is.</span>
-
-<span style="color:#75715e"># compile &amp; install Xen</span>
-make dist -jN  <span style="color:#75715e">#set N to be number of cores/threads on your machine.</span>
-sudo make install 
+<span style="color:#75715e"># enable XSM support
+</span><span style="color:#75715e"></span>make -C xen menuconfig
+<span style="color:#75715e"># Mark option 
+</span><span style="color:#75715e">#   &#39;Common Features -&gt; Xen Security Modules support&#39;, and 
+</span><span style="color:#75715e">#   suboption &#39;Compile Xen with a built-in security policy&#39;. 
+</span><span style="color:#75715e"># leave other option as is.
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># compile &amp; install Xen
+</span><span style="color:#75715e"></span>make dist -jN  <span style="color:#75715e">#set N to be number of cores/threads on your machine.
+</span><span style="color:#75715e"></span>sudo make install 
 
 sudo systemctl enable xen-qemu-dom0-disk-backend.service
 sudo systemctl enable xen-init-dom0.service
@@ -265,20 +264,20 @@ sudo systemctl enable xenconsoled.service
 
 sudo ldconfig
 
-<span style="color:#75715e"># enable XSM flask in grub entry options</span>
+<span style="color:#75715e"># enable XSM flask in grub entry options
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># backup 
+</span><span style="color:#75715e"></span>sudo cp /etc/default/grub /etc/default/grub-backup
 
-<span style="color:#75715e"># backup</span> 
-sudo cp /etc/default/grub /etc/default/grub-backup
-
-<span style="color:#75715e"># Add the following line to the file /etc/default/grub:</span>
-<span style="color:#75715e">#     GRUB_CMDLINE_XEN_DEFAULT=&#34;dom0_mem=3096M,max:3096M flask=enforcing&#34;</span>
-<span style="color:#75715e"># This will be appended to the option of Linux kernel in the grub entry</span>
-sudo sed -i <span style="color:#e6db74">&#39;/GRUB_CMDLINE_LINUX=/aGRUB_CMDLINE_XEN_DEFAULT=\&#34;dom0_mem=3096M,max:3096M flask=enforcing\&#34;&#39;</span> /etc/default/grub
+<span style="color:#75715e"># Add the following line to the file /etc/default/grub:
+</span><span style="color:#75715e">#     GRUB_CMDLINE_XEN_DEFAULT=&#34;dom0_mem=3096M,max:3096M flask=enforcing&#34;
+</span><span style="color:#75715e"># This will be appended to the option of Linux kernel in the grub entry
+</span><span style="color:#75715e"></span>sudo sed -i <span style="color:#e6db74">&#39;/GRUB_CMDLINE_LINUX=/aGRUB_CMDLINE_XEN_DEFAULT=\&#34;dom0_mem=3096M,max:3096M flask=enforcing\&#34;&#39;</span> /etc/default/grub
 
 sudo update-grub
 
-<span style="color:#75715e"># Finally reboot and choose Xen entry upon grub menu</span>
-sudo reboot</code></pre></div>
+<span style="color:#75715e"># Finally reboot and choose Xen entry upon grub menu
+</span><span style="color:#75715e"></span>sudo reboot</code></pre></div>
 <p>Select Xen to boot upon grub entry. After login, you can verify installation via:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo xl list -Z</code></pre></div>
 <p>The output should looks like:</p>
@@ -292,14 +291,14 @@ Domain-0                                     <span style="color:#ae81ff">0</span
 <h5 id="windows-vm">Install Windows as guest</h5>
 
 <p>Create logical volumn for Windows VM:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># create logical volumn</span>
-<span style="color:#75715e">#   with</span> 
-<span style="color:#75715e">#   size 20G, name &#39;lvwin7&#39;, in volumn group &#39;vg0&#39;</span>
-sudo lvcreate -L20G -n lvwin7 vg0
-<span style="color:#75715e"># verify the lv with its name and size</span>
-sudo lvdisplay
-<span style="color:#75715e"># outputs should include</span>
-    --- Logical volume ---
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># create logical volumn
+</span><span style="color:#75715e">#   with 
+</span><span style="color:#75715e">#   size 20G, name &#39;lvwin7&#39;, in volumn group &#39;vg0&#39;
+</span><span style="color:#75715e"></span>sudo lvcreate -L20G -n lvwin7 vg0
+<span style="color:#75715e"># verify the lv with its name and size
+</span><span style="color:#75715e"></span>sudo lvdisplay
+<span style="color:#75715e"># outputs should include
+</span><span style="color:#75715e"></span>    --- Logical volume ---
     LV Path                /dev/vg0/lvwin7
     LV Name                lvwin7
     VG Name                vg0
@@ -307,8 +306,8 @@ sudo lvdisplay
     LV Write Access        read/write
     LV Creation host, time ruisrv, <span style="color:#ae81ff">2018</span>-06-28 <span style="color:#ae81ff">13</span>:09:38 -0400
     LV Status              available
-    <span style="color:#75715e"># open                 0</span>
-    LV Size                <span style="color:#ae81ff">20</span>.00 GiB
+    <span style="color:#75715e"># open                 0
+</span><span style="color:#75715e"></span>    LV Size                <span style="color:#ae81ff">20</span>.00 GiB
     Current LE             <span style="color:#ae81ff">5120</span>
     Segments               <span style="color:#ae81ff">1</span>
     Allocation             inherit
@@ -394,8 +393,8 @@ VMIFS           | --enable-vmifs<span style="color:#f92672">=</span>yes        |
 <p>Build LibVMI:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make</code></pre></div>
 <p>Now create Rekall profile for Windows 7 guest VM:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># check VM is running</span>
-$ sudo xl list
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># check VM is running
+</span><span style="color:#75715e"></span>$ sudo xl list
 Name                                        ID   Mem VCPUs	StateTime<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
 Domain-0                                     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10239</span>     <span style="color:#ae81ff">4</span>     r-----    <span style="color:#ae81ff">2479</span>.8
 win7                                         <span style="color:#ae81ff">6</span>  <span style="color:#ae81ff">4096</span>     <span style="color:#ae81ff">2</span>     -b----      <span style="color:#ae81ff">84</span>.1
@@ -409,9 +408,9 @@ Windows Kernel found @ 0xc04d000
 	Multi-processor without PAE
 	Signature: <span style="color:#ae81ff">17744</span>.
 	Machine: <span style="color:#ae81ff">34404</span>.
-	<span style="color:#75715e"># of sections: 24.</span>
-	<span style="color:#75715e"># of symbols: 0.</span>
-	Timestamp: <span style="color:#ae81ff">1290245402</span>.
+	<span style="color:#75715e"># of sections: 24.
+</span><span style="color:#75715e"></span>	<span style="color:#75715e"># of symbols: 0.
+</span><span style="color:#75715e"></span>	Timestamp: <span style="color:#ae81ff">1290245402</span>.
 	Characteristics: <span style="color:#ae81ff">34</span>.
 	Optional header size: <span style="color:#ae81ff">240</span>.
 	Optional header type: 0x20b
@@ -443,19 +442,19 @@ Windows Kernel found @ 0xc04d000
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PDB GUID: 3844dbb920174967be7aa4a2c20430fa2
 Kernel filename: ntkrnlmp.pdb</code></pre></div>
 <p>If vmi-win-guid fails to find the Windows kernel in memory, you can use Rekall to examine ntoskrnl.exe on the disk:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo kpartx -l /dev/vg0/lvwin7  <span style="color:#75715e"># This will show all the partiions in the volumn, e,g</span>
-vg0-lvwin7p1 : <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">204800</span> /dev/vg0/lvwin7 <span style="color:#ae81ff">2048</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo kpartx -l /dev/vg0/lvwin7  <span style="color:#75715e"># This will show all the partiions in the volumn, e,g
+</span><span style="color:#75715e"></span>vg0-lvwin7p1 : <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">204800</span> /dev/vg0/lvwin7 <span style="color:#ae81ff">2048</span>
 vg0-lvwin7p2 : <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">41734144</span> /dev/0/lvwin7 <span style="color:#ae81ff">206848</span>
 $ sudo kpartx -a /dev/vg0/lvwin7
-$ sudo mount -o ro /dev/mapper/vg0-lvwin7p2 /mnt  <span style="color:#75715e"># might change partion to find the Windows/ folder</span>
-$ sudo rekal peinfo -f /mnt/Windows/System32/ntoskrnl.exe &gt; WORKDIR/peinfo.txt
+$ sudo mount -o ro /dev/mapper/vg0-lvwin7p2 /mnt  <span style="color:#75715e"># might change partion to find the Windows/ folder
+</span><span style="color:#75715e"></span>$ sudo rekal peinfo -f /mnt/Windows/System32/ntoskrnl.exe &gt; WORKDIR/peinfo.txt
 $ sudo umount /mnt
 $ sudo kpartx -d /dev/vg0/lvwin7</code></pre></div>
 <p>The generated WORKDIR/peinfo.txt file will contain the required PDB filename and GUID.</p>
 
 <p>Given PDB file name and GUID, we can generate the Rekall profile:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># create a target configuration directory in TinyVMI source tree.</span> 
-mkdir WORKDIR/xen/stubdom/tinyvmi/tiny-vmi/config/target_conf_examples/example_target_windows7_sp1_x64_new
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># create a target configuration directory in TinyVMI source tree. 
+</span><span style="color:#75715e"></span>mkdir WORKDIR/xen/stubdom/tinyvmi/tiny-vmi/config/target_conf_examples/example_target_windows7_sp1_x64_new
 cd WORKDIR/xen/stubdom/tinyvmi/tiny-vmi/config/target_conf_examples/example_target_windows7_sp1_x64_new/
 
 rekall fetch_pdb ntkrpamp 3844dbb920174967be7aa4a2c20430fa2
@@ -498,12 +497,12 @@ xxd -i windows7-sp1.rekall.json &gt; target_libvmi_sym.c</code></pre></div>
 </code></pre>
 
 <p>Then create symblic link in TinyVMI source:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># go to dir WORKDIR/xen/stubdom/tinyvmi/tiny-vmi/config/target_conf</span> 
-<span style="color:#75715e"># and remove old links</span>
-cd ../../target_conf
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># go to dir WORKDIR/xen/stubdom/tinyvmi/tiny-vmi/config/target_conf 
+</span><span style="color:#75715e"># and remove old links
+</span><span style="color:#75715e"></span>cd ../../target_conf
 rm *
-<span style="color:#75715e"># create symbolic</span> 
-ln -s ../target_conf_examples/example_target_windows7_sp1_x64_new/* .</code></pre></div>
+<span style="color:#75715e"># create symbolic 
+</span><span style="color:#75715e"></span>ln -s ../target_conf_examples/example_target_windows7_sp1_x64_new/* .</code></pre></div>
 <p>Update <code>DOMAIN_NAME</code> in file <code>xen/stubdom/tinyvmi/include/domain_id.h</code>. For example:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef DOMAIN_ID_H
 </span><span style="color:#75715e">#define DOMAIN_ID_H
